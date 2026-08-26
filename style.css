@@ -44,17 +44,21 @@ font-family: 'Orbitron', sans-serif;
 .brand-calse {
     
     background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
+    color:transparent;
+    display: inline-block;
     margin-right: 6px;
 }
 
 .brand-game {
     background: linear-gradient(180deg, #ff4d4d 0%, #d32f2f 60%, #990000 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
+    color: transparent;
+    display: inline-block;
 }
 
 /* --- Sağ Üst Buton Stilleri --- */
