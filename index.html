@@ -2,37 +2,44 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalseGame</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Üst Menü (Header) -->
+    <!-- Üst Bar (Navbar) -->
     <header class="navbar">
         <div class="logo">
-            <span class="logo-text">CalseGame</span>
+            <a href="index.html" style="text-decoration: none;">
+                <span class="logo-text">
+                    <span class="brand-calse">Calse</span><span class="brand-game">Game</span>
+                </span>
+            </a>
+        </div>
+
+
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
         </div>
     </header>
+    
 
-    <!-- Ana İçerik Alanı -->
+
+    <!-- Ana İçerik -->
     <main class="container">
-        <!-- Hero Başlık Alanı -->
-        <section class="hero">
-            <h1>Efsanevi Oyunları Keşfedin</h1>
-            <p>Favori oyunlarınız için içerikleri bulun ve hemen oynamaya başlayın.</p>
-        </section>
 
-        <!-- Arama Çubuğu -->
+        <!-- Arama Kutusu -->
         <div class="search-box">
-            <input type="text" placeholder="Bir oyun ara...">
-            <button class="search-btn">🔍</button>
+            <input type="text" placeholder="Oyun ara...">
         </div>
 
-        <!-- Oyun Kartları Grid Alanı -->
+        <!-- Oyun Kartları Listesi -->
         <section class="games-grid">
             
-            <div class="game-card">
+            <!-- GTA 5 -->
+            <a href="gta5.html" class="game-card">
                 <div class="card-image">
                     <img src="images/gta5.png" alt="GTA 5">
                 </div>
@@ -40,9 +47,10 @@
                     <h3>GTA 5</h3>
                     <p class="stats">🎮 1.2M Oyuncu</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="game-card">
+            <!-- GTA 4 -->
+            <a href="gta4.html" class="game-card">
                 <div class="card-image">
                     <img src="images/gta4.png" alt="GTA 4">
                 </div>
@@ -50,9 +58,10 @@
                     <h3>GTA 4</h3>
                     <p class="stats">🎮 450K Oyuncu</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="game-card">
+            <!-- GTA San Andreas -->
+            <a href="gtasa.html" class="game-card">
                 <div class="card-image">
                     <img src="images/GtaSanAndreas.png" alt="GTA San Andreas">
                 </div>
@@ -60,9 +69,10 @@
                     <h3>GTA San Andreas</h3>
                     <p class="stats">🎮 890K Oyuncu</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="game-card">
+            <!-- GTA Vice City -->
+            <a href="gtavc.html" class="game-card">
                 <div class="card-image">
                     <img src="images/GtaViceCity.png" alt="GTA Vice City">
                 </div>
@@ -70,9 +80,10 @@
                     <h3>GTA Vice City</h3>
                     <p class="stats">🎮 320K Oyuncu</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="game-card">
+            <!-- GTA 3 -->
+            <a href="gta3.html" class="game-card">
                 <div class="card-image">
                     <img src="images/gta3.png" alt="GTA 3">
                 </div>
@@ -80,9 +91,10 @@
                     <h3>GTA 3</h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
-            </div>
+            </a>
 
         </section>
+
     </main>
 
 </body>

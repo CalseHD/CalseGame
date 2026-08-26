@@ -10,12 +10,13 @@ body {
     color: #ffffff;
 }
 
-/* Üst Kırmızı Bar */
+/* Üst Kırmızı Bar (Sağ üst butonlar için güncellendi) */
 .navbar {
     background-color: #d32f2f;
-    padding: 15px 40px;
+    padding: 20px 40px;            /* Yüksekliği butonlarla dengeli dursun diye hafif daralttık */
     display: flex;
     align-items: center;
+    justify-content: space-between; /* LOGOYU SOLA, BUTONLARI SAĞA İTER */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -30,17 +31,69 @@ body {
 }
 
 .logo-text {
-    font-size: 22px;
+    font-size: 60px;
     font-weight: bold;
     color: #ffffff;
     letter-spacing: 1px;
+}
+
+.brand-calse {
+    color:#ff3333;
+
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000
+}
+
+.brand-game {
+    color: #ffffff;
+}
+
+/* --- Sağ Üst Buton Stilleri --- */
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-auth {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+/* Oturum Aç (Şeffaf / Beyaz Çerçeveli) */
+.btn-login {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+}
+
+.btn-login:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Kayıt Ol (Beyaz Dolgulu) */
+.btn-register {
+    color: #d32f2f;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.btn-register:hover {
+    background-color: #f0f0f0;
 }
 
 /* Ana Konteyner */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 80px 20px;
 }
 
 /* Hero Başlık */
@@ -101,21 +154,24 @@ body {
 /* Oyun Kartları */
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}     
+    
 .game-card {
+    width: 220px;
     background-color: #1e1e1e;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
 }
 
 .game-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.3);
+    transform: translateY(-5px);
 }
 
 .card-image img {
@@ -141,3 +197,52 @@ body {
     font-size: 13px;
     color: #888;
 }
+
+/* --- Oyun Detay Sayfası Seçenekleri (Oyun & Modlar) --- */
+
+.game-detail-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.options-grid {
+    display: table;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-spacing: 20px; /* Kutular arasındaki mesafe */
+}
+
+.option-card {
+    display: table-cell;
+    width: 50%;
+    background-color: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    vertical-align: top;
+}
+
+.option-card:hover {
+    border-color: #d32f2f;
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+}
+
+.option-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.option-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.option-card p {
+    color: #aaa;
+    font-size: 14px;
+}         
