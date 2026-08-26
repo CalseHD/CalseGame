@@ -31,24 +31,30 @@ body {
 }
 
 .logo-text {
-    font-size: 60px;
-    font-weight: bold;
-    color: #ffffff;
-    letter-spacing: 1px;
+font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    font-style: italic; /* Resimdeki gibi yatık/eğik yapar */
+    text-transform: uppercase; /* Tüm harfleri büyük yapar */
+    letter-spacing: 2px; /* Harf aralarını açar */
+    display: inline-flex;
+    align-items: center;
 }
 
 .brand-calse {
-    color:#ff3333;
-
-    text-shadow:
-        -1px -1px 0 #000,
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000
+    
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
+    margin-right: 6px;
 }
 
 .brand-game {
-    color: #ffffff;
+    background: linear-gradient(180deg, #ff4d4d 0%, #d32f2f 60%, #990000 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.8));
 }
 
 /* --- Sağ Üst Buton Stilleri --- */
@@ -348,4 +354,35 @@ body {
 .btn-google img {
     width: 18px;
     height: 18px;
-}    
+}  
+/* İndirme Butonu Stili */
+.btn-download {
+    display: inline-block;
+    background-color: #d32f2f;
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-download:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+}  
+/* Logo ve Yazı Hizalaması */
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+/* Kendi Logonuzun Boyutu */
+.nav-logo-img {
+    height: 70px; /* Logonun yüksekliğini buradan ayarlayabilirsin */
+    width: auto;
+    object-fit: contain;
+}
