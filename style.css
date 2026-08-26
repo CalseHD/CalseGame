@@ -33,32 +33,37 @@ body {
 .logo-text {
 font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 40px;
-    font-style: italic; /* Resimdeki gibi yatık/eğik yapar */
-    text-transform: uppercase; /* Tüm harfleri büyük yapar */
-    letter-spacing: 2px; /* Harf aralarını açar */
+    font-size: 55px;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     display: inline-flex;
     align-items: center;
 }
 
 .brand-calse {
     
-    background: linear-gradient(180deg, #ffffff 0%, #ffffff 50%, #ffffff 100%);
-    background-clip: text;
+background: linear-gradient(180deg, #ff4d4d 0%, #ff0000 50%, #b30000 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    color:transparent;
     display: inline-block;
     margin-right: 6px;
+    /* Harf Etrafındaki Siyah Çerçeve (Stroke) */
+    -webkit-text-stroke: 1.5px #000000;
+    filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.8));
 }
 
 .brand-game {
-    background: linear-gradient(180deg, #ff4d4d 0%, #d32f2f 60%, #990000 100%);
-    background-clip: text;
+ 
+   background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 50%, #d4cbcb 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: transparent;
     display: inline-block;
+    /* Harf Etrafındaki Siyah Çerçeve (Stroke) */
+    -webkit-text-stroke: 1.5px #000000;
+    filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.8));
 }
 
 /* --- Sağ Üst Buton Stilleri --- */
