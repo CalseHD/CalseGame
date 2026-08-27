@@ -6,11 +6,11 @@
     <title>CalseGame</title>
     <link rel="icon" type="image/png" href="images/CG.png">
     <!-- Google Fonts: Orbitron Fontu -->
-     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
+    <!-- Google Identity Services Kütüphanesi -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <link rel="stylesheet" href="style.css">
-    
-    
 </head>
 <body>
 
@@ -26,14 +26,11 @@
             </a>
         </div>
 
-
         <div class="nav-auth">
             <a href="#" class="btn-auth btn-login">Oturum Aç</a>
             <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
         </div>
     </header>
-    
-
 
     <!-- Ana İçerik -->
     <main class="container">
@@ -101,10 +98,9 @@
                 </div>
             </a>
 
-
-            <a href="pes2017.html"class="game-card">
+            <a href="pes2017.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/pes2017.png"alt="Pro Evolution Soccer 2017">
+                    <img src="images/pes2017.png" alt="Pro Evolution Soccer 2017">
                 </div>
                 <div class="card-info">
                     <h3>Pro Evolution Soccer 2017</h3>
@@ -112,10 +108,9 @@
                 </div>
             </a>
 
-
-             <a href="pes2018.html"class="game-card">
+            <a href="pes2018.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/pes2018.png"alt="Pro Evolution Soccer 2018">
+                    <img src="images/pes2018.png" alt="Pro Evolution Soccer 2018">
                 </div>
                 <div class="card-info">
                     <h3>Pro Evolution Soccer 2018</h3>
@@ -123,10 +118,9 @@
                 </div>
             </a>
 
-
-             <a href="pes2019.html"class="game-card">
+            <a href="pes2019.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/pes2019.png"alt="Pro Evolution Soccer 2019">
+                    <img src="images/pes2019.png" alt="Pro Evolution Soccer 2019">
                 </div>
                 <div class="card-info">
                     <h3>Pro Evolution Soccer 2019</h3>
@@ -134,10 +128,9 @@
                 </div>
             </a>
 
-
-             <a href="pes2020.html"class="game-card">
+            <a href="pes2020.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/pes2020.png"alt="Pro Evolution Soccer 2020">
+                    <img src="images/pes2020.png" alt="Pro Evolution Soccer 2020">
                 </div>
                 <div class="card-info">
                     <h3>Pro Evolution Soccer 2020</h3>
@@ -145,10 +138,9 @@
                 </div>
             </a>
 
-
-             <a href="pes2021.html"class="game-card">
+            <a href="pes2021.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/pes2021.png"alt="Pro Evolution Soccer 2021">
+                    <img src="images/pes2021.png" alt="Pro Evolution Soccer 2021">
                 </div>
                 <div class="card-info">
                     <h3>Pro Evolution Soccer 2021</h3>
@@ -156,10 +148,9 @@
                 </div>
             </a>
 
-
-             <a href="Granny.html"class="game-card">
+            <a href="Granny.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/Granny.png"alt="Granny">
+                    <img src="images/Granny.png" alt="Granny">
                 </div>
                 <div class="card-info">
                     <h3>Granny</h3>
@@ -167,10 +158,9 @@
                 </div>
             </a>
 
-
-             <a href="Granny2.html"class="game-card">
+            <a href="Granny2.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/Granny2.png"alt="Granny Chapter Two">
+                    <img src="images/Granny2.png" alt="Granny Chapter Two">
                 </div>
                 <div class="card-info">
                     <h3>Granny Chapter Two</h3>
@@ -178,10 +168,9 @@
                 </div>
             </a>
 
-
-            <a href="Granny3.html"class="game-card">
+            <a href="Granny3.html" class="game-card">
                 <div class="card-image">
-                    <image src="images/Granny3.png"alt="Granny 3">
+                    <img src="images/Granny3.png" alt="Granny 3">
                 </div>
                 <div class="card-info">
                     <h3>Granny 3</h3>
@@ -189,28 +178,11 @@
                 </div>
             </a>
 
-
-        
-
-
-
-
-         
-
-
-          
-
-
-            
-
-
-
-            
-
         </section>
 
     </main>
-<!-- Oturum Aç Modalı -->
+
+    <!-- Oturum Aç Modalı -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -221,9 +193,14 @@
                 <button type="submit" class="btn-submit">Giriş Yap</button>
             </form>
             <div class="divider">veya</div>
-            <button class="btn-google">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Giriş Yap
-            </button>
+            
+            <!-- Google Giriş Butonu Entegrasyonu -->
+            <div id="g_id_onload"
+                 data-client_id="906297734505-5as4t6t523o2l9309593n9pcaatfvoi8.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%"></div>
         </div>
     </div>
 
@@ -239,15 +216,37 @@
                 <button type="submit" class="btn-submit">Kayıt Ol</button>
             </form>
             <div class="divider">veya</div>
-            <button class="btn-google">
-                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Kayıt Ol
-            </button>
+            
+            <!-- Google Kayıt Butonu Entegrasyonu (İsteğe bağlı olarak aynı Client ID ile çalışır) -->
+            <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%"></div>
+        </div>
+    </div>
+
+    <!-- Profil Düzenleme Modalı -->
+    <div id="profileModal" class="modal" style="display: none;">
+        <div class="modal-content" style="text-align: center; max-width: 400px;">
+            <span class="modal-close" onclick="closeProfileModal()">&times;</span>
+            <h2>Profil Ayarları</h2>
+            
+            <div style="margin: 20px 0;">
+                <img id="modalProfileImg" src="images/default-avatar.png" alt="Profil" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #ff3333; margin-bottom: 10px;">
+                <br>
+                <label for="uploadAvatar" style="background: #333; color: #fff; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 13px; display: inline-block;">
+                    📸 Fotoğraf Değiştir
+                </label>
+                <input type="file" id="uploadAvatar" accept="image/*" style="display: none;">
+            </div>
+
+            <form id="profileForm" class="auth-form" style="text-align: left;">
+                <label style="color: #aaa; font-size: 13px;">Kullanıcı Adı:</label>
+                <input type="text" id="profileUsernameInput" required style="margin-top: 5px; margin-bottom: 15px;">
+                
+                <button type="submit" class="btn-submit" style="width: 100%;">Değişiklikleri Kaydet</button>
+            </form>
         </div>
     </div>
 
     <!-- SCRIPT BAGLANTISI -->
     <script src="script.js"></script>
-</body>
-</html>
 </body>
 </html>

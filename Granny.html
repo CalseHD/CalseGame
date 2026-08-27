@@ -24,6 +24,10 @@
                     
             </a>
         </div>
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
     </header>
 
     <!-- Detay İçerik -->
@@ -48,6 +52,39 @@
             </a>
         </section>
     </main>
+    <!-- Modallar ve Script -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Oturum Aç</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="Kullanıcı Adı veya İsim" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Giriş Yap</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Giriş Yap
+            </button>
+        </div>
+    </div>
 
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Kayıt Ol</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="İsim" required>
+                <input type="email" placeholder="Gmail / E-posta" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Kayıt Ol</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Kayıt Ol
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -44,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kapatma Butonları (X)
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            loginModal.style.display = 'none';
-            registerModal.style.display = 'none';
+            closeModals();
         });
     });
 
@@ -53,5 +52,153 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (e) => {
         if (e.target === loginModal) loginModal.style.display = 'none';
         if (e.target === registerModal) registerModal.style.display = 'none';
+        const profileModal = document.getElementById('profileModal');
+        if (e.target === profileModal) profileModal.style.display = 'none';
     });
+
+    // Oturum Durumunu Kontrol Et
+    checkAuthStatus();
+    setupProfileListeners();
 });
+
+// --- 3. KLASİK GİRİŞ / KAYIT İŞLEMLERİ ---
+const loginForm = document.querySelector('#loginModal .auth-form');
+if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const usernameInput = this.querySelector('input[type="text"]').value;
+        
+        const userData = {
+            username: usernameInput || "Kullanıcı",
+            profilePic: "images/default-avatar.png" 
+        };
+        
+        localStorage.setItem('calseUser', JSON.stringify(userData));
+        closeModals();
+        checkAuthStatus();
+    });
+}
+
+// --- 4. GOOGLE İLE GİRİŞ ENTEGRASYONU ---
+function handleCredentialResponse(response) {
+    const responsePayload = parseJwt(response.credential);
+    
+    const user = {
+        username: responsePayload.name,
+        email: responsePayload.email,
+        profilePic: responsePayload.picture
+    };
+
+    // Bilgileri tarayıcı hafızasına kaydet
+    localStorage.setItem('calseUser', JSON.stringify(user));
+    
+    // Modalları kapat ve arayüzü güncelle
+    closeModals(); 
+    checkAuthStatus();
+}
+
+// JWT Token Çözücü Yardımcı Fonksiyonu
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('0' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+}
+
+// --- 5. OTURUM DURUMU VE NAVBAR GÜNCELLEME ---
+function checkAuthStatus() {
+    const savedUser = localStorage.getItem('calseUser');
+    const navAuth = document.querySelector('.nav-auth');
+
+    if (savedUser && navAuth) {
+        const user = JSON.parse(savedUser);
+        
+        navAuth.innerHTML = `
+            <div class="user-profile-menu" id="openProfileBtn" style="display: flex; align-items: center; gap: 10px; cursor: pointer;" title="Profili Düzenle">
+                <img src="${user.profilePic || 'images/default-avatar.png'}" alt="Profil" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 2px solid #ff3333;">
+                <span style="color: #fff; font-weight: bold; font-size: 14px;">${user.username}</span>
+                <button id="logoutBtn" style="background: #333; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 5px;">Çıkış</button>
+            </div>
+        `;
+
+        // Çıkış yapma butonu
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            localStorage.removeItem('calseUser');
+            window.location.reload();
+        });
+        
+        // Profil alanına tıklayınca profil modalını aç
+        document.getElementById('openProfileBtn').addEventListener('click', () => {
+            openProfileModal();
+        });
+    }
+}
+
+// --- 6. MODAL VE PROFİL YÖNETİMİ ---
+function closeModals() {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => modal.style.display = 'none');
+}
+
+function closeProfileModal() {
+    const modal = document.getElementById('profileModal');
+    if(modal) modal.style.display = 'none';
+}
+
+function openProfileModal() {
+    const savedUser = localStorage.getItem('calseUser');
+    if (!savedUser) return;
+    
+    const user = JSON.parse(savedUser);
+    const modal = document.getElementById('profileModal');
+    const imgElement = document.getElementById('modalProfileImg');
+    const inputElement = document.getElementById('profileUsernameInput');
+    
+    if (modal && imgElement && inputElement) {
+        imgElement.src = user.profilePic || 'images/default-avatar.png';
+        inputElement.value = user.username;
+        modal.style.display = 'flex';
+    }
+}
+
+function setupProfileListeners() {
+    const profileForm = document.getElementById('profileForm');
+    if (profileForm) {
+        profileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const newName = document.getElementById('profileUsernameInput').value;
+            
+            let user = JSON.parse(localStorage.getItem('calseUser'));
+            user.username = newName;
+            localStorage.setItem('calseUser', JSON.stringify(user));
+            
+            closeProfileModal();
+            checkAuthStatus();
+        });
+    }
+
+    const uploadAvatarInput = document.getElementById('uploadAvatar');
+    if (uploadAvatarInput) {
+        uploadAvatarInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const base64Image = event.target.result;
+                    
+                    document.getElementById('modalProfileImg').src = base64Image;
+                    
+                    let user = JSON.parse(localStorage.getItem('calseUser'));
+                    user.profilePic = base64Image;
+                    localStorage.setItem('calseUser', JSON.stringify(user));
+                    
+                    checkAuthStatus();
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+}
