@@ -83,21 +83,20 @@ if (loginForm) {
 function handleCredentialResponse(response) {
     const responsePayload = parseJwt(response.credential);
     
-    // Daha önce kalıcı olarak kaydedilmiş özel bir isim var mı bakalım?
+    // Daha önce kalıcı olarak kaydedilmiş özel isim ve fotoğraf kilitleri var mı?
     const permanentCustomName = localStorage.getItem('customSavedUsername');
+    const permanentCustomPic = localStorage.getItem('customSavedProfilePic');
 
     const user = {
-        // Eğer kalıcı özel bir isim varsa onu kullan, yoksa Google'dakini al
         username: permanentCustomName ? permanentCustomName : responsePayload.name,
         email: responsePayload.email,
-        profilePic: responsePayload.picture
+        profilePic: permanentCustomPic ? permanentCustomPic : responsePayload.picture
     };
 
     localStorage.setItem('calseUser', JSON.stringify(user));
     closeModals(); 
     checkAuthStatus();
 }
-
 
 // JWT Token Çözücü Yardımcı Fonksiyonu
 function parseJwt(token) {
@@ -173,12 +172,13 @@ function setupProfileListeners() {
             e.preventDefault();
             const newName = document.getElementById('profileUsernameInput').value;
 
+            // İsmi kalıcı olarak kilitliyoruz
             localStorage.setItem('customSavedUsername', newName);
             
             let savedUser = localStorage.getItem('calseUser');
             if(savedUser){
-                let user=JSON.parse(savedUser);
-                user.username=newName;
+                let user = JSON.parse(savedUser);
+                user.username = newName;
                 localStorage.setItem('calseUser', JSON.stringify(user));
             }
             
@@ -196,10 +196,15 @@ function setupProfileListeners() {
                 reader.onload = function(event) {
                     const base64Image = event.target.result;
                     
+                    // KESİN ÇÖZÜM: Fotoğrafı da kalıcı hafızaya kilitliyoruz!
+                    localStorage.setItem('customSavedProfilePic', base64Image);
+                    
                     document.getElementById('modalProfileImg').src = base64Image;
                     
-                    let user = JSON.parse(localStorage.getItem('calseUser'));
+                    let savedUser = localStorage.getItem('calseUser');
+                    let user = savedUser ? JSON.parse(savedUser) : {};
                     user.profilePic = base64Image;
+                    localStorage.setItem('caglesUser', JSON.stringify(user)); // Güvenli güncelleme
                     localStorage.setItem('calseUser', JSON.stringify(user));
                     
                     checkAuthStatus();
