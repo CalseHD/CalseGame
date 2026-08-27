@@ -83,16 +83,17 @@ if (loginForm) {
 function handleCredentialResponse(response) {
     const responsePayload = parseJwt(response.credential);
     
+    // Daha önce kalıcı olarak kaydedilmiş özel bir isim var mı bakalım?
+    const permanentCustomName = localStorage.getItem('customSavedUsername');
+
     const user = {
-        username: responsePayload.name,
+        // Eğer kalıcı özel bir isim varsa onu kullan, yoksa Google'dakini al
+        username: permanentCustomName ? permanentCustomName : responsePayload.name,
         email: responsePayload.email,
         profilePic: responsePayload.picture
     };
 
-    // Bilgileri tarayıcı hafızasına kaydet
     localStorage.setItem('calseUser', JSON.stringify(user));
-    
-    // Modalları kapat ve arayüzü güncelle
     closeModals(); 
     checkAuthStatus();
 }
@@ -171,10 +172,15 @@ function setupProfileListeners() {
         profileForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const newName = document.getElementById('profileUsernameInput').value;
+
+            localStorage.setItem('customSavedUsername', newName);
             
-            let user = JSON.parse(localStorage.getItem('calseUser'));
-            user.username = newName;
-            localStorage.setItem('calseUser', JSON.stringify(user));
+            let savedUser = localStorage.getItem('calseUser');
+            if(savedUser){
+                let user=JSON.parse(savedUser);
+                user.username=newName;
+                localStorage.setItem('calseUser', JSON.stringify(user));
+            }
             
             closeProfileModal();
             checkAuthStatus();
