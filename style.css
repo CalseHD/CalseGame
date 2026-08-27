@@ -402,3 +402,6 @@ background: linear-gradient(180deg, #ff4d4d 0%, #ff0000 50%, #b30000 100%);
     align-items: center;
     gap: 4px; /* CALSE ile GAME arasındaki boşluğu milimetrik olarak sabitler */
 }
+.g_id_signin iframe {
+    width: 100% !important;
+}
