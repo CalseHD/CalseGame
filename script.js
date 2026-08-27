@@ -81,21 +81,27 @@ if (loginForm) {
 
 // --- 4. GOOGLE İLE GİRİŞ ENTEGRASYONU ---
 function handleCredentialResponse(response) {
-    const responsePayload = parseJwt(response.credential);
+    const responsePayload = parseJwt(response.email ? response.credential : response.credential);
     
+    // Hafızada zaten kayıtlı bir kullanıcı var mı bakalım
+    const savedUser = localStorage.getItem('calseUser');
+    let existingUser = savedUser ? JSON.parse(savedUser) : null;
+
+    // KESİN ÇÖZÜM: Eğer daha önceden bir kullanıcı adı varsa, Google'ın adını UNUT ve eski ismini koru!
+    let finalUsername = (existingUser && existingUser.username) ? existingUser.username : responsePayload.name;
+    let finalProfilePic = (existingUser && existingUser.profilePic && existingUser.profilePic !== "images/default-avatar.png") ? existingUser.profilePic : responsePayload.picture;
+
     const user = {
-        username: responsePayload.name,
+        username: finalUsername,
         email: responsePayload.email,
-        profilePic: responsePayload.picture
+        profilePic: finalProfilePic
     };
 
-    // Bilgileri tarayıcı hafızasına kaydet
     localStorage.setItem('calseUser', JSON.stringify(user));
-    
-    // Modalları kapat ve arayüzü güncelle
     closeModals(); 
     checkAuthStatus();
 }
+
 
 // JWT Token Çözücü Yardımcı Fonksiyonu
 function parseJwt(token) {
