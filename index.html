@@ -15,7 +15,7 @@
 <body>
 
     <!-- Üst Bar (Navbar) -->
-    <header class="navbar">
+     <header class="navbar">
         <div class="logo">
             <a href="index.html" class="logo-text">
                 <img src="images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
@@ -31,7 +31,7 @@
             <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
         </div>
     </header>
-
+     
     <!-- Ana İçerik -->
     <main class="container">
 
@@ -41,32 +41,42 @@
         </div>
 
         <!-- Oyun Kartları Listesi -->
-        <section class="games-grid">
-            
-            <!-- GTA 5 -->
-            <a href="gta5.html" class="game-card">
+         <section class="games-grid" id="gameGrid"> 
+            <!-- GTA 6 -->
+            <a href="GameCard/gta6.html" class="game-card">
                 <div class="card-image">
-                    <img src="images/gta5.png" alt="Grand Theft Auto 5">
+                    <img src="images/GTA6.png" alt="Grand Theft Auto: VI">
                 </div>
                 <div class="card-info">
-                    <h3>Grand Theft Auto 5</h3>
+                    <h3>Grand Theft Auto: VI</h3>
+                    <p class="stats">🎮 10M Oyuncu</p>
+                </div>
+            </a>
+            
+            <!-- GTA 5 -->
+            <a href="GameCard/gta5.html" class="game-card">
+                <div class="card-image">
+                    <img src="images/gta5.png" alt="Grand Theft Auto: V">
+                </div>
+                <div class="card-info">
+                    <h3>Grand Theft Auto: V</h3>
                     <p class="stats">🎮 1.2M Oyuncu</p>
                 </div>
             </a>
 
             <!-- GTA 4 -->
-            <a href="gta4.html" class="game-card">
+            <a href="GameCard/gta4.html" class="game-card">
                 <div class="card-image">
-                    <img src="images/gta4.png" alt="Grand Theft Auto 4">
+                    <img src="images/gta4.png" alt="Grand Theft Auto: IV">
                 </div>
                 <div class="card-info">
-                    <h3>Grand Theft Auto 4</h3>
+                    <h3>Grand Theft Auto: IV</h3>
                     <p class="stats">🎮 450K Oyuncu</p>
                 </div>
             </a>
 
             <!-- GTA San Andreas -->
-            <a href="gtasa.html" class="game-card">
+            <a href="GameCard/gtasa.html" class="game-card">
                 <div class="card-image">
                     <img src="images/GtaSanAndreas.png" alt="Grand Theft Auto San Andreas">
                 </div>
@@ -77,7 +87,7 @@
             </a>
 
             <!-- GTA Vice City -->
-            <a href="gtavc.html" class="game-card">
+            <a href="GameCard/gtavc.html" class="game-card">
                 <div class="card-image">
                     <img src="images/GtaViceCity.png" alt="Grand Theft Auto Vice City">
                 </div>
@@ -88,17 +98,27 @@
             </a>
 
             <!-- GTA 3 -->
-            <a href="gta3.html" class="game-card">
+            <a href="GameCard/gta3.html" class="game-card">
                 <div class="card-image">
-                    <img src="images/gta3.png" alt="Grand Theft Auto 3">
+                    <img src="images/gta3.png" alt="Grand Theft Auto:  III">
                 </div>
                 <div class="card-info">
-                    <h3>Grand Theft Auto 3</h3>
+                    <h3>Grand Theft Auto:  III</h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
             </a>
+            <!-- MINECRAFT -->
+            <a href="GameCard/minecraft.html" class="game-card">
+                <div class="card-image">
+                    <img src="images/minecraft.png" alt="MINECRAFT">
+                </div>
+                <div class="card-info">
+                    <h3>MINECRAFT</h3>
+                    <p class="stats">🎮 2.5M Oyuncu</p>
+                </div>
+            </a>
 
-            <a href="pes2017.html" class="game-card">
+            <a href="GameCard/pes2017.html" class="game-card">
                 <div class="card-image">
                     <img src="images/pes2017.png" alt="Pro Evolution Soccer 2017">
                 </div>
@@ -108,7 +128,7 @@
                 </div>
             </a>
 
-            <a href="pes2018.html" class="game-card">
+            <a href="GameCard/pes2018.html" class="game-card">
                 <div class="card-image">
                     <img src="images/pes2018.png" alt="Pro Evolution Soccer 2018">
                 </div>
@@ -118,7 +138,7 @@
                 </div>
             </a>
 
-            <a href="pes2019.html" class="game-card">
+            <a href="GameCard/pes2019.html" class="game-card">
                 <div class="card-image">
                     <img src="images/pes2019.png" alt="Pro Evolution Soccer 2019">
                 </div>
@@ -128,7 +148,7 @@
                 </div>
             </a>
 
-            <a href="pes2020.html" class="game-card">
+            <a href="GameCard/pes2020.html" class="game-card">
                 <div class="card-image">
                     <img src="images/pes2020.png" alt="Pro Evolution Soccer 2020">
                 </div>
@@ -138,7 +158,7 @@
                 </div>
             </a>
 
-            <a href="pes2021.html" class="game-card">
+            <a href="GameCard/pes2021.html" class="game-card">
                 <div class="card-image">
                     <img src="images/pes2021.png" alt="Pro Evolution Soccer 2021">
                 </div>
@@ -148,7 +168,7 @@
                 </div>
             </a>
 
-            <a href="Granny.html" class="game-card">
+            <a href="GameCard/Granny.html" class="game-card">
                 <div class="card-image">
                     <img src="images/Granny.png" alt="Granny">
                 </div>
@@ -158,7 +178,7 @@
                 </div>
             </a>
 
-            <a href="Granny2.html" class="game-card">
+            <a href="GameCard/Granny2.html" class="game-card">
                 <div class="card-image">
                     <img src="images/Granny2.png" alt="Granny Chapter Two">
                 </div>
@@ -168,7 +188,7 @@
                 </div>
             </a>
 
-            <a href="Granny3.html" class="game-card">
+            <a href="GameCard/Granny3.html" class="game-card">
                 <div class="card-image">
                     <img src="images/Granny3.png" alt="Granny 3">
                 </div>
@@ -176,7 +196,26 @@
                     <h3>Granny 3</h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
+
+            <a href="GameCard/cs1.6.html" class="game-card">
+                <div class="card-image">
+                    <img src="images/cs1.6.png" alt="Counter Strike 1.6">
+                </div>
+                <div class="card-info">
+                    <h3>Counter Strike 1.6</h3>
+                    <p class="stats">🎮 500K Oyuncu</p>
+                </div>
             </a>
+            
+        </section>
+                 
+
+
+                <!-- Sayfa butonlarının çıkacağı alan -->
+                <div id="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;"></div>
+            
+
+            
 
         </section>
 

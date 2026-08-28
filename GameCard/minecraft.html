@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft - CalseGame</title>
+    <link rel="icon" type="image/png" href="/images/CG.png">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Üst Bar (Navbar) -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html" class="logo-text">
+                <img src="/images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                <span class="brand-calse">Calse</span><span class="brand-game">Game</span>
+                <style>
+                    .brand-game {
+                        margin-left: 4px !important; 
+                    }
+                </style>
+            </a>
+        </div>
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container" style="padding-top: 40px;">
+        
+        <div class="game-detail-header" style="text-align: center; margin-bottom: 30px;">
+            <h1>Minecraft</h1>
+            <p>Sınırsız yaratıcılık dünyasında kendi maceranı inşa et, modlar ve eklentilerle oyunu zirveye taşı.</p>
+        </div>
+
+        <!-- Kategoriler Grid Alanı -->
+        <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            
+            <!-- 1. Modlar -->
+            <a href="minecraft-mods.html" style="background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 25px; text-align: center; text-decoration: none; color: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#ff3333'" onmouseout="this.style.borderColor='#333'">
+                <div style="font-size: 36px; margin-bottom: 10px;">⚙️</div>
+                <h3 style="color: #fff; margin-bottom: 8px;">Modlar</h3>
+                <p style="color: #aaa; font-size: 14px;">Oyuna yeni mekanikler, eşyalar ve yaratıklar ekleyin.</p>
+            </a>
+
+            <!-- 2. Doku Paketleri -->
+            <a href="minecraft-texturepacks.html" style="background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 25px; text-align: center; text-decoration: none; color: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#ff3333'" onmouseout="this.style.borderColor='#333'">
+                <div style="font-size: 36px; margin-bottom: 10px;">🎨</div>
+                <h3 style="color: #fff; margin-bottom: 8px;">Doku Paketleri</h3>
+                <p style="color: #aaa; font-size: 14px;">Grafikleri ve görselliği tamamen yenileyin.</p>
+            </a>
+
+            <!-- 3. Dünyalar -->
+            <a href="minecraft-worlds.html" style="background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 25px; text-align: center; text-decoration: none; color: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#ff3333'" onmouseout="this.style.borderColor='#333'">
+                <div style="font-size: 36px; margin-bottom: 10px;">🗺️</div>
+                <h3 style="color: #fff; margin-bottom: 8px;">Dünyalar</h3>
+                <p style="color: #aaa; font-size: 14px;">Hazır haritalar, maceralar ve hayatta kalma dünyaları.</p>
+            </a>
+
+            <!-- 4. Modpacks -->
+            <a href="minecraft-modpacks.html" style="background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 25px; text-align: center; text-decoration: none; color: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#ff3333'" onmouseout="this.style.borderColor='#333'">
+                <div style="font-size: 36px; margin-bottom: 10px;">📦</div>
+                <h3 style="color: #fff; margin-bottom: 8px;">Modpacks</h3>
+                <p style="color: #aaa; font-size: 14px;">Birbirleriyle uyumlu yüzlerce modun bir arada olduğu paketler.</p>
+            </a>
+
+            <!-- 5. Shaders -->
+            <a href="minecraft-shaders.html" style="background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 25px; text-align: center; text-decoration: none; color: #fff; transition: 0.3s;" onmouseover="this.style.borderColor='#ff3333'" onmouseout="this.style.borderColor='#333'">
+                <div style="font-size: 36px; margin-bottom: 10px;">✨</div>
+                <h3 style="color: #fff; margin-bottom: 8px;">Shaders</h3>
+                <p style="color: #aaa; font-size: 14px;">Gerçekçi gölgeler, su efektleri ve ışıklandırmalar.</p>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Modallar ve Script -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Oturum Aç</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="Kullanıcı Adı veya İsim" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Giriş Yap</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Giriş Yap
+            </button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Kayıt Ol</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="İsim" required>
+                <input type="email" placeholder="Gmail / E-posta" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Kayıt Ol</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Kayıt Ol
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

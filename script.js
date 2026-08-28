@@ -1,21 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. ARAMA FİLTRELEME İŞLEVİ ---
+    // --- 1. ARAMA VE SAYFALAMA ENTEGRASYONU ---
     const searchInput = document.querySelector('.search-box input');
-    const gameCards = document.querySelectorAll('.game-card');
+    const gameGrid = document.getElementById('gameGrid');
+    const paginationContainer = document.getElementById('pagination');
+    let allCards = gameGrid ? Array.from(gameGrid.querySelectorAll('.game-card')) : [];
 
+    const itemsPerPage = 15; // Her sayfada en fazla 15 oyun
+    let currentPage = 1;
+
+    function updatePaginationAndDisplay(cardsToDisplay) {
+        if (!gameGrid) return;
+        
+        const totalPages = Math.ceil(cardsToDisplay.length / itemsPerPage);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
+
+        gameGrid.innerHTML = ''; // Ekranı temizle
+
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const currentCards = cardsToDisplay.slice(start, end);
+
+        // O sayfaya ait kartları ekrana bas
+        currentCards.forEach(card => gameGrid.appendChild(card));
+
+        // Sayfa butonlarını oluştur
+        renderPaginationButtons(totalPages, cardsToDisplay);
+    }
+
+    function renderPaginationButtons(totalPages, cardsToDisplay) {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+
+        // Eğer toplam sayfa 1 veya daha azsa buton gösterme
+        if (totalPages <= 1) return;
+
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.innerText = i;
+            btn.style.padding = '8px 14px';
+            btn.style.borderRadius = '6px';
+            btn.style.border = '1px solid #333';
+            btn.style.cursor = 'pointer';
+            btn.style.fontWeight = 'bold';
+
+            if (i === currentPage) {
+                btn.style.background = '#ff3333';
+                btn.style.color = '#fff';
+                btn.style.borderColor = '#ff3333';
+            } else {
+                btn.style.background = '#222';
+                btn.style.color = '#fff';
+            }
+
+            btn.addEventListener('click', () => {
+                currentPage = i;
+                updatePaginationAndDisplay(cardsToDisplay);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            paginationContainer.appendChild(btn);
+        }
+    }
+
+    // Arama İşlevi (Arama yapıldığında sayfalamayı da filtreye göre uyarlar)
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase().trim();
+            currentPage = 1; // Arama yapınca 1. sayfaya dön
 
-            gameCards.forEach(card => {
+            const filteredCards = allCards.filter(card => {
                 const title = card.querySelector('h3').textContent.toLowerCase();
-                if (title.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                return title.includes(query);
             });
+
+            updatePaginationAndDisplay(filteredCards);
         });
+    }
+
+    // İlk açılışta tüm oyunları sayfalı şekilde yükle
+    if (gameGrid) {
+        updatePaginationAndDisplay(allCards);
     }
 
     // --- 2. POP-UP (MODAL) YÖNETİMİ ---
@@ -83,7 +147,6 @@ if (loginForm) {
 function handleCredentialResponse(response) {
     const responsePayload = parseJwt(response.credential);
     
-    // Daha önce kalıcı olarak kaydedilmiş özel isim ve fotoğraf kilitleri var mı?
     const permanentCustomName = localStorage.getItem('customSavedUsername');
     const permanentCustomPic = localStorage.getItem('customSavedProfilePic');
 
@@ -98,7 +161,6 @@ function handleCredentialResponse(response) {
     checkAuthStatus();
 }
 
-// JWT Token Çözücü Yardımcı Fonksiyonu
 function parseJwt(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -124,14 +186,12 @@ function checkAuthStatus() {
             </div>
         `;
 
-        // Çıkış yapma butonu
         document.getElementById('logoutBtn').addEventListener('click', (e) => {
             e.stopPropagation(); 
             localStorage.removeItem('calseUser');
             window.location.reload();
         });
         
-        // Profil alanına tıklayınca profil modalını aç
         document.getElementById('openProfileBtn').addEventListener('click', () => {
             openProfileModal();
         });
@@ -172,7 +232,6 @@ function setupProfileListeners() {
             e.preventDefault();
             const newName = document.getElementById('profileUsernameInput').value;
 
-            // İsmi kalıcı olarak kilitliyoruz
             localStorage.setItem('customSavedUsername', newName);
             
             let savedUser = localStorage.getItem('calseUser');
@@ -196,7 +255,6 @@ function setupProfileListeners() {
                 reader.onload = function(event) {
                     const base64Image = event.target.result;
                     
-                    // KESİN ÇÖZÜM: Fotoğrafı da kalıcı hafızaya kilitliyoruz!
                     localStorage.setItem('customSavedProfilePic', base64Image);
                     
                     document.getElementById('modalProfileImg').src = base64Image;
@@ -204,7 +262,6 @@ function setupProfileListeners() {
                     let savedUser = localStorage.getItem('calseUser');
                     let user = savedUser ? JSON.parse(savedUser) : {};
                     user.profilePic = base64Image;
-                    localStorage.setItem('caglesUser', JSON.stringify(user)); // Güvenli güncelleme
                     localStorage.setItem('calseUser', JSON.stringify(user));
                     
                     checkAuthStatus();

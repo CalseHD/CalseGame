@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Granny - CalseGame</title>
-    <link rel="icon" type="image/png" href="images/CG.png">
-    <link rel="stylesheet" href="style.css">
+    <title>Grand Theft Auto Vice City - CalseGame</title>
+    <link rel="icon" type="image/png" href="/images/CG.png">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Üst Bar (Navbar) -->
     <header class="navbar">
         <div class="logo">
             <a href="index.html" class="logo-text">
-                <img src="images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                <img src="/images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
                 <span class="logo-text"></span>
-                   <span class="brand-calse">Calse</span><span class="brand-game">Game</span>
-                   <style>
+                    <span class="brand-calse">Calse</span><span class="brand-game">Game</span>
+                    <style>
                       .brand-game {
                           margin-left: 4px !important; 
         }
                    </style>
-                    
+                </span>
             </a>
         </div>
         <div class="nav-auth">
@@ -30,28 +30,30 @@
         </div>
     </header>
 
-    <!-- Detay İçerik -->
+    <!-- Ana İçerik -->
     <main class="container">
         <div class="game-detail-header">
-            <h1>Granny</h1>
-            <p>İstediğiniz kategoriyi seçerek devam edin.</p>
+            <h1>Grand Theft Auto Vice City</h1>
+            <p>Lütfen devam etmek istediğiniz kategoriyi seçin.</p>
         </div>
 
-        <!-- Seçenek Kartları -->
-        <section class="options-grid">
-            <a href="#" class="option-card">
+        <div class="options-grid">
+            <!-- OYUN KARTI (İndirme Sayfasına Gider) -->
+            <a href="/GameDownloadPage/gtavc-game.html" class="option-card">
                 <div class="option-icon">🎮</div>
                 <h2>Oyun</h2>
-                <p>Oyun indirme bağlantıları ve kurulum detayları.</p>
+                <p>GTA Vice City orjinal/full sürümünü indirin.</p>
             </a>
 
+            <!-- MODLAR KARTI -->
             <a href="#" class="option-card">
-                <div class="option-icon">🧩</div>
+                <div class="option-icon">🛠️</div>
                 <h2>Modlar</h2>
-                <p>Araba, grafik ve Türkçe yama modları.</p>
+                <p>Araba, grafik ve en popüler yamaları keşfedin.</p>
             </a>
-        </section>
+        </div>
     </main>
+
     <!-- Modallar ve Script -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
@@ -85,6 +87,7 @@
             </button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
