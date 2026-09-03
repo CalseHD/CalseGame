@@ -10,23 +10,33 @@
 <body>
 
     <!-- Üst Bar (Navbar) -->
-    <header class="navbar">
+      <header class="navbar">
+    <div style="display: flex; align-items: center; gap: 30px;">
+        <!-- Logo -->
         <div class="logo">
-            <a href="index.html" class="logo-text">
+            <a href="../index.html" class="logo-text">
                 <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
-                <span class="brand-calse">Calse</span><span class="brand-game">Game</span>
-                <style>
-                    .brand-game {
-                        margin-left: 4px !important; 
-                    }
-                </style>
+                <span class="logo-words">
+                    <span class="brand-calse">CALSE</span>
+                    <span class="brand-game">GAME</span>
+                </span>
             </a>
         </div>
-        <div class="nav-auth">
-            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
-            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
-        </div>
-    </header>
+
+        <!-- Tek ve Düzgün Menü -->
+        <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">Ana Sayfa</a>
+            <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+            <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; transition: all 0.3s ease;">Mobil Oyunlar</a>
+        </nav>
+    </div>
+
+    <!-- Sağ Üst Butonlar -->
+    <div class="nav-auth">
+        <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+        <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+    </div>
+</header>
 
     <!-- Ana İçerik -->
     <main class="container" style="padding-top: 40px;">
@@ -111,6 +121,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>

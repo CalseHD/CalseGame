@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Mod Detayı - CalseGame</title>
+    <link rel="icon" type="image/png" href="../images/CG.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Slider (Fotoğraf Değiştirici) Stilleri */
+        .slider-container {
+            position: relative;
+            max-width: 100%;
+            height: 350px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #444;
+            background: #111;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: 0.3s;
+            user-select: none;
+        }
+        .slider-btn:hover {
+            background: rgba(255, 51, 51, 0.8);
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Üst Bar (Navbar) -->
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="logo">
+                <a href="../index.html" class="logo-text">
+                    <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1);">Ana Sayfa</a>
+                <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+                <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px;">Mobil Oyunlar</a>
+            </nav>
+        </div>
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <div class="game-detail-header">
+            <h1 id="modTitle">Yükleniyor...</h1>
+            <p id="modSubtitle">Lütfen bekleyin...</p>
+        </div>
+
+        <div style="background: #1e1e1e; border-radius: 12px; padding: 30px; border: 1px solid #333; max-width: 800px; margin: 0 auto;">
+            
+            <!-- 1. Oyun / Mod Hakkında Bölümü -->
+            <div style="margin-bottom: 30px;">
+                <h2 style="color: #ff3333; margin-bottom: 10px; font-size: 20px;">Mod Hakkında</h2>
+                <p id="modDesc" style="color: #bbb; line-height: 1.6; font-size: 15px;">
+                    Yükleniyor...
+                </p>
+            </div>
+
+            <!-- 2. İleri-Geri Fotoğraf Galerisi (Slider) -->
+            <div style="margin-bottom: 30px;">
+                <h2 style="color: #ff3333; margin-bottom: 15px; font-size: 20px;">Oyun Görselleri</h2>
+                <div class="slider-container" id="sliderContainer">
+                    <!-- JavaScript buraya resimleri otomatik getirecek -->
+                    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- 3. İndirme Linki Bölümü -->
+            <div style="text-align: center; margin-bottom: 40px; background: #242424; padding: 25px; border-radius: 8px;">
+                <h3 style="margin-bottom: 15px; color: #fff;">İndirme Linki</h3>
+                <a id="downloadBtn" href="#" target="_blank" style="color: #ff4d4d; text-decoration: underline; font-size: 18px; font-weight: 600;">
+                    Google Drive ile İndir 
+                </a>
+            </div>
+
+            <!-- 4. Kurulum Videosu Bölümü (En Altta) -->
+            <div style="margin-bottom: 20px; text-align: center;">
+                <h2 style="color: #ff3333; margin-bottom: 15px; font-size: 20px;">Kurulum Videosu (Nasıl Yüklenir?)</h2>
+                <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; border-radius: 8px; overflow: hidden; border: 1px solid #444;">
+                    <iframe id="videoIframe" src="" 
+                        title="Kurulum Videosu" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Geri Dönüş -->
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="shadowfight2_mods.html" style="color: #888; text-decoration: none; font-size: 14px;">← Mod Listesine Geri Dön</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Dinamik Mod Verileri ve Slider JavaScript -->
+    <script>
+        // Mod Veri Tabanı (Yeni mod eklemek istediğinde sadece buraya ekleyeceksin!)
+        const modsData = {
+            "para-modu": {
+                title: "Shadow Fight 2 Sınırsız Para ve Elmas Modu",
+                subtitle: "Gölgeler dünyasında sınırsız kaynaklarla güçlü bir başlangıç yapın!",
+                desc: "Bu mod sayesinde Shadow Fight 2 deneyiminizi en üst seviyeye taşıyabilirsiniz. Oyun içinde dilediğiniz silahı, zırhı ve büyüyü sınırsız para ve elmas sayesinde zorlanmadan satın alabilir, rakiplerinizi kolayca alt edebilirsiniz.<br><br>NOT: Kurulum Videosunu izleyerek modun nasıl yükleneceğini öğrenebilirsiniz.",
+                images: [
+                    "../images/shadow fight 2 mod img/photo1.png",
+                    "../images/shadow fight 2 mod img/photo2.png",
+                    "../images/shadow fight 2 mod img/photo3.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/10YjGCv4c73ISseATTh6GS-HeUxAxPUol/view?usp=sharing",
+                videoId: "BURAYA_BIRINCI_MODUN_YOUTUBE_ID"
+            },
+            "titan-menu": {
+                title: "Shadow Fight 2 Titan Modu",
+                subtitle: "Gelişmiş hile menüsü ve özel yetenekler!",
+                desc: "Titan menü modu ile oyun içerisinde zorlandığınız yerleri kolayca geçebilir, özel hile menüsünü aktif edebilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/shadow fight 2 mod img/photo1.png",
+                    "../images/shadow fight 2 mod img/photo2.png",
+                    
+                ],
+                downloadUrl: "https://drive.google.com/file/d/IKINCI_MODUN_DRIVE_LINKI/view?usp=sharing",
+                videoId: "BURAYA_IKINCI_MODUN_YOUTUBE_ID"
+            }
+        };
+
+        // URL'den ?mod=... parametresini al
+        const urlParams = new URLSearchParams(window.location.search);
+        const modKey = urlParams.get('mod') || 'para-modu'; // Eğer parametre yoksa varsayılan olarak para-modu açılır
+
+        const currentMod = modsData[modKey] || modsData['para-modu'];
+
+        // HTML elemanlarını doldur
+        document.getElementById('pageTitle').textContent = currentMod.title + " - CalseGame";
+        document.getElementById('modTitle').textContent = currentMod.title;
+        document.getElementById('modSubtitle').textContent = currentMod.subtitle;
+        document.getElementById('modDesc').innerHTML = currentMod.desc;
+        document.getElementById('downloadBtn').href = currentMod.downloadUrl;
+        document.getElementById('videoIframe').src = "https://www.youtube.com/embed/" + currentMod.videoId;
+
+        // Slider Görsellerini Dinamik Ekle
+        const sliderContainer = document.getElementById('sliderContainer');
+        currentMod.images.forEach((imgSrc, index) => {
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.className = index === 0 ? 'slide active' : 'slide';
+            img.alt = "Görsel " + (index + 1);
+            // Butonlardan önce ekle
+            sliderContainer.insertBefore(img, sliderContainer.querySelector('.prev'));
+        });
+
+        // Slider Kontrol Fonksiyonları
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>

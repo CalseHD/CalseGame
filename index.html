@@ -5,45 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CalseGame</title>
     <link rel="icon" type="image/png" href="images/CG.png">
-    <!-- Google Fonts: Orbitron Fontu -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&display=swap" rel="stylesheet">
-    <!-- Google Identity Services Kütüphanesi -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Üst Bar (Navbar) -->
-     <header class="navbar">
-        <div class="logo">
-            <a href="index.html" class="logo-text">
-                <img src="images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
-                <span class="logo-words">
-                    <span class="brand-calse">CALSE</span>
-                    <span class="brand-game">GAME</span>
-                </span>
-            </a>
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    <img src="images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="#" onclick="filterCategory('hepsi')" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">Ana Sayfa</a>
+                <a href="#" onclick="filterCategory('pc')" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+                <a href="#" onclick="filterCategory('mobil')" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; transition: all 0.3s ease;">Mobil Oyunlar</a>
+            </nav>
         </div>
+ 
 
         <div class="nav-auth">
             <a href="#" class="btn-auth btn-login">Oturum Aç</a>
             <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
         </div>
     </header>
-     
-    <!-- Ana İçerik -->
+
     <main class="container">
 
-        <!-- Arama Kutusu -->
         <div class="search-box">
-            <input type="text" placeholder="Oyun ara...">
+            <input type="text" id="searchInput" onkeyup="applyFilters()" placeholder="Oyun ara...">
         </div>
+        
 
-        <!-- Oyun Kartları Listesi -->
-         <section class="games-grid" id="gameGrid"> 
-            <!-- GTA 6 -->
-            <a href="GameCard/gta6.html" class="game-card">
+          <section class="games-grid" id="gameGrid"> 
+            
+            <a href="GameCard/gta6.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/GTA6.png" alt="Grand Theft Auto: VI">
                 </div>
@@ -53,8 +56,7 @@
                 </div>
             </a>
             
-            <!-- GTA 5 -->
-            <a href="GameCard/gta5.html" class="game-card">
+            <a href="GameCard/gta5.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/gta5.png" alt="Grand Theft Auto: V">
                 </div>
@@ -64,8 +66,7 @@
                 </div>
             </a>
 
-            <!-- GTA 4 -->
-            <a href="GameCard/gta4.html" class="game-card">
+            <a href="GameCard/gta4.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/gta4.png" alt="Grand Theft Auto: IV">
                 </div>
@@ -75,8 +76,7 @@
                 </div>
             </a>
 
-            <!-- GTA San Andreas -->
-            <a href="GameCard/gtasa.html" class="game-card">
+            <a href="GameCard/gtasa.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/GtaSanAndreas.png" alt="Grand Theft Auto San Andreas">
                 </div>
@@ -86,8 +86,7 @@
                 </div>
             </a>
 
-            <!-- GTA Vice City -->
-            <a href="GameCard/gtavc.html" class="game-card">
+            <a href="GameCard/gtavc.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/GtaViceCity.png" alt="Grand Theft Auto Vice City">
                 </div>
@@ -97,18 +96,17 @@
                 </div>
             </a>
 
-            <!-- GTA 3 -->
-            <a href="GameCard/gta3.html" class="game-card">
+            <a href="GameCard/gta3.html" class="game-card" data-category="pc">
                 <div class="card-image">
-                    <img src="images/gta3.png" alt="Grand Theft Auto:  III">
+                    <img src="images/gta3.png" alt="Grand Theft Auto: III">
                 </div>
                 <div class="card-info">
-                    <h3>Grand Theft Auto:  III</h3>
+                    <h3>Grand Theft Auto: III</h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
             </a>
-            <!-- MINECRAFT -->
-            <a href="GameCard/minecraft.html" class="game-card">
+
+            <a href="GameCard/minecraft.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/minecraft.png" alt="MINECRAFT">
                 </div>
@@ -118,7 +116,7 @@
                 </div>
             </a>
 
-            <a href="GameCard/pes2017.html" class="game-card">
+            <a href="GameCard/pes2017.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/pes2017.png" alt="Pro Evolution Soccer 2017">
                 </div>
@@ -128,7 +126,7 @@
                 </div>
             </a>
 
-            <a href="GameCard/pes2018.html" class="game-card">
+            <a href="GameCard/pes2018.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/pes2018.png" alt="Pro Evolution Soccer 2018">
                 </div>
@@ -138,7 +136,7 @@
                 </div>
             </a>
 
-            <a href="GameCard/pes2019.html" class="game-card">
+            <a href="GameCard/pes2019.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/pes2019.png" alt="Pro Evolution Soccer 2019">
                 </div>
@@ -148,7 +146,7 @@
                 </div>
             </a>
 
-            <a href="GameCard/pes2020.html" class="game-card">
+            <a href="GameCard/pes2020.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/pes2020.png" alt="Pro Evolution Soccer 2020">
                 </div>
@@ -158,46 +156,47 @@
                 </div>
             </a>
 
-            <a href="GameCard/pes2021.html" class="game-card">
+            <a href="GameCard/pes2021.html" class="game-card" data-category="pc">
                 <div class="card-image">
-                    <img src="images/pes2021.png" alt="Pro Evolution Soccer 2021">
+                    <img src="images/pes2021.png" alt="Pro Evolution Soccer 2021 PC">
                 </div>
                 <div class="card-info">
-                    <h3>Pro Evolution Soccer 2021</h3>
+                    <h3>Pro Evolution Soccer 2021 (PC)</h3>
                     <p class="stats">🎮 1.5M Oyuncu</p>
                 </div>
             </a>
 
-            <a href="GameCard/Granny.html" class="game-card">
+            <a href="GameCard/Granny.html" class="game-card" data-category="pc">
                 <div class="card-image">
-                    <img src="images/Granny.png" alt="Granny">
+                    <img src="images/Granny.png" alt="Granny ">
                 </div>
                 <div class="card-info">
-                    <h3>Granny</h3>
+                    <h3>Granny </h3>
                     <p class="stats">🎮 120K Oyuncu</p>
                 </div>
             </a>
 
-            <a href="GameCard/Granny2.html" class="game-card">
+            <a href="GameCard/Granny2.html" class="game-card" data-category="pc">
                 <div class="card-image">
-                    <img src="images/Granny2.png" alt="Granny Chapter Two">
+                    <img src="images/Granny2.png" alt="Granny Chapter Two ">
                 </div>
                 <div class="card-info">
-                    <h3>Granny Chapter Two</h3>
+                    <h3>Granny Chapter Two </h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
             </a>
 
-            <a href="GameCard/Granny3.html" class="game-card">
+            <a href="GameCard/Granny3.html" class="game-card" data-category="pc">
                 <div class="card-image">
-                    <img src="images/Granny3.png" alt="Granny 3">
+                    <img src="images/Granny3.png" alt="Granny 3 ">
                 </div>
                 <div class="card-info">
-                    <h3>Granny 3</h3>
+                    <h3>Granny 3 </h3>
                     <p class="stats">🎮 150K Oyuncu</p>
                 </div>
+            </a>
 
-            <a href="GameCard/cs1.6.html" class="game-card">
+            <a href="GameCard/cs1.6.html" class="game-card" data-category="pc">
                 <div class="card-image">
                     <img src="images/cs1.6.png" alt="Counter Strike 1.6">
                 </div>
@@ -206,26 +205,37 @@
                     <p class="stats">🎮 500K Oyuncu</p>
                 </div>
             </a>
+
+            <a href="MobileGames/pes2021mobile.html" class="game-card" data-category="mobil">
+                <div class="card-image">
+                    <img src="images/pes2021mobile.png" alt="Pro Evolution Soccer 2021 Mobil">
+                </div>
+                <div class="card-info">
+                    <h3>Pro Evolution Soccer 2021 (Mobil)</h3>
+                    <p class="stats">📱 2.1M Oyuncu</p>
+                </div>
+            </a>
+
+            <a href="MobileGames/shadowfight2.html" class="game-card" data-category="mobil">
+                <div class="card-image">
+                    <img src="images/shadowfight2.png" alt="Shadow Fight 2">
+                </div>
+                <div class="card-info">
+                    <h3>Shadow Fight 2</h3>
+                    <p class="stats">📱 1M Oyuncu</p>
+                </div>
+            </a>
             
         </section>
-                 
 
-
-                <!-- Sayfa butonlarının çıkacağı alan -->
-                <div id="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;"></div>
-            
-
-            
-
-        </section>
+        <div id="pagination" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;"></div>
 
     </main>
 
-    <!-- Oturum Aç Modalı -->
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <h2>Oturum Aç</h2>
+            <h2>Oturum Aç </h2>
             <form class="auth-form">
                 <input type="text" placeholder="Kullanıcı Adı veya İsim" required>
                 <input type="password" placeholder="Şifre" required>
@@ -233,24 +243,17 @@
             </form>
             <div class="divider">veya</div>
             
-            <!-- Google Giriş Butonu Entegrasyonu -->
-             <div style="width: 100%; margin-top: 10px; display: flex; justify-content: center;">
-            <div id="g_id_onload"
-                 data-client_id="906297734505-5as4t6t523o2l9309593n9pcaatfvoi8.apps.googleusercontent.com"
-                 data-callback="handleCredentialResponse"
-                 data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%" data-theme="filled_black"></div>
-           
-         </div>
-    
-           
-
-            
+            <div style="width: 100%; margin-top: 10px; display: flex; flex-direction: column; align-items: center;">
+                <div id="g_id_onload"
+                     data-client_id="906297734505-5as4t6t523o2l9309593n9pcaatfvoi8.apps.googleusercontent.com"
+                     data-callback="handleCredentialResponse"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%" data-theme="filled_black"></div>
+           </div>
         </div>
     </div>
 
-    <!-- Kayıt Ol Modalı -->
     <div id="registerModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
@@ -261,14 +264,9 @@
                 <input type="password" placeholder="Şifre" required>
                 <button type="submit" class="btn-submit">Kayıt Ol</button>
             </form>
-            <div class="divider">veya</div>
-            
-            <!-- Google Kayıt Butonu Entegrasyonu (İsteğe bağlı olarak aynı Client ID ile çalışır) -->
-            <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%"></div>
         </div>
     </div>
 
-    <!-- Profil Düzenleme Modalı -->
     <div id="profileModal" class="modal" style="display: none;">
         <div class="modal-content" style="text-align: center; max-width: 400px;">
             <span class="modal-close" onclick="closeProfileModal()">&times;</span>
@@ -286,14 +284,295 @@
             <form id="profileForm" class="auth-form" style="text-align: left;">
                 <label style="color: #aaa; font-size: 13px;">Kullanıcı Adı:</label>
                 <input type="text" id="profileUsernameInput" required style="margin-top: 5px; margin-bottom: 15px;">
-                
                 <button type="submit" class="btn-submit" style="width: 100%;">Değişiklikleri Kaydet</button>
             </form>
         </div>
     </div>
 
+    <script>
+        let currentCategory = 'hepsi';
+        let currentPage = 1;
+        const itemsPerPage = 15;
 
-    <!-- SCRIPT BAGLANTISI -->
-    <script src="script.js"></script>
+        function filterCategory(category) {
+            currentCategory = category;
+            currentPage = 1;
+            applyFilters();
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const cat = urlParams.get('cat');
+      if (cat) {
+          filterCategory(cat);
+       }
+     });
+
+
+        function changePage(page) {
+            currentPage = page;
+            applyFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function applyFilters() {
+            const searchInput = document.getElementById('searchInput');
+            const searchText = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const cards = document.querySelectorAll('.game-card');
+            
+            let matchedCards = [];
+            
+            cards.forEach(card => {
+                const gameCategory = card.getAttribute('data-category');
+                const titleElement = card.querySelector('h3');
+                const gameTitle = titleElement ? titleElement.textContent.toLowerCase() : '';
+                
+                const matchesCategory = (currentCategory === 'hepsi' || gameCategory === currentCategory);
+                const matchesSearch = gameTitle.includes(searchText);
+                
+                if (matchesCategory && matchesSearch) {
+                    matchedCards.push(card);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const totalPages = Math.ceil(matchedCards.length / itemsPerPage);
+            
+            if (currentPage > totalPages && totalPages > 0) {
+                currentPage = totalPages;
+            }
+            if (currentPage < 1) {
+                currentPage = 1;
+            }
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            matchedCards.forEach((card, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const paginationContainer = document.getElementById('pagination');
+            if (paginationContainer) {
+                paginationContainer.innerHTML = '';
+                
+                if (totalPages > 1) {
+                    for (let i = 1; i <= totalPages; i++) {
+                        const btn = document.createElement('button');
+                        btn.textContent = i;
+                        btn.style.padding = '6px 12px';
+                        btn.style.cursor = 'pointer';
+                        btn.style.border = 'none';
+                        btn.style.borderRadius = '4px';
+                        btn.style.fontWeight = 'bold';
+                        
+                        if (i === currentPage) {
+                            btn.style.background = '#ff3333';
+                            btn.style.color = 'white';
+                        } else {
+                            btn.style.background = '#333';
+                            btn.style.color = '#ccc';
+                        }
+                        
+                        btn.onclick = () => changePage(i);
+                        paginationContainer.appendChild(btn);
+                    }
+                }
+            }
+        }
+
+        // --- SAYFA YÜKLENDİĞİNDE ÇALIŞACAKLAR ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const loginModal = document.getElementById("loginModal");
+            const registerModal = document.getElementById("registerModal");
+            const loginBtn = document.querySelector(".btn-login");
+            const registerBtn = document.querySelector(".btn-register");
+            const closeButtons = document.querySelectorAll(".modal-close");
+
+            if (loginBtn && loginModal) {
+                loginBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    loginModal.style.display = "flex";
+                });
+            }
+
+            if (registerBtn && registerModal) {
+                registerBtn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    registerModal.style.display = "flex";
+                });
+            }
+
+            closeButtons.forEach(btn => {
+                btn.addEventListener("click", function() {
+                    closeModals();
+                });
+            });
+
+            window.addEventListener("click", function(e) {
+                if (e.target === loginModal) loginModal.style.display = "none";
+                if (e.target === registerModal) registerModal.style.display = "none";
+                const profileModal = document.getElementById('profileModal');
+                if (e.target === profileModal) profileModal.style.display = 'none';
+            });
+
+            applyFilters();
+            checkAuthStatus();
+            setupProfileListeners();
+        });
+
+        // --- 3. KLASİK GİRİŞ İŞLEMLERİ ---
+        const loginForm = document.querySelector('#loginModal .auth-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const usernameInput = this.querySelector('input[type="text"]').value;
+                
+                const userData = {
+                    username: usernameInput || "Kullanıcı",
+                    profilePic: "images/default-avatar.png" 
+                };
+                
+                localStorage.setItem('calseUser', JSON.stringify(userData));
+                closeModals();
+                checkAuthStatus();
+            });
+        }
+
+        // --- 4. GOOGLE İLE GİRİŞ ENTEGRASYONU ---
+        function handleCredentialResponse(response) {
+            const responsePayload = parseJwt(response.credential);
+            
+            const permanentCustomName = localStorage.getItem('customSavedUsername');
+            const permanentCustomPic = localStorage.getItem('customSavedProfilePic');
+
+            const user = {
+                username: permanentCustomName ? permanentCustomName : responsePayload.name,
+                email: responsePayload.email,
+                profilePic: permanentCustomPic ? permanentCustomPic : responsePayload.picture
+            };
+
+            localStorage.setItem('calseUser', JSON.stringify(user));
+            closeModals(); 
+            checkAuthStatus();
+        }
+
+        function parseJwt(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('0' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
+        // --- 5. OTURUM DURUMU VE NAVBAR GÜNCELLEME ---
+        function checkAuthStatus() {
+            const savedUser = localStorage.getItem('calseUser');
+            const navAuth = document.querySelector('.nav-auth');
+
+            if (savedUser && navAuth) {
+                const user = JSON.parse(savedUser);
+                
+                navAuth.innerHTML = `
+                    <div class="user-profile-menu" id="openProfileBtn" style="display: flex; align-items: center; gap: 10px; cursor: pointer;" title="Profili Düzenle">
+                        <img src="${user.profilePic || 'images/default-avatar.png'}" alt="Profil" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; border: 2px solid #ff3333;">
+                        <span style="color: #fff; font-weight: bold; font-size: 14px;">${user.username}</span>
+                        <button id="logoutBtn" style="background: #333; color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-left: 5px;">Çıkış</button>
+                    </div>
+                `;
+
+                document.getElementById('logoutBtn').addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    localStorage.removeItem('calseUser');
+                    window.location.reload();
+                });
+                
+                document.getElementById('openProfileBtn').addEventListener('click', () => {
+                    openProfileModal();
+                });
+            }
+        }
+
+        // --- 6. MODAL VE PROFİL YÖNETİMİ ---
+        function closeModals() {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => modal.style.display = 'none');
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profileModal');
+            if(modal) modal.style.display = 'none';
+        }
+
+        function openProfileModal() {
+            const savedUser = localStorage.getItem('calseUser');
+            if (!savedUser) return;
+            
+            const user = JSON.parse(savedUser);
+            const modal = document.getElementById('profileModal');
+            const imgElement = document.getElementById('modalProfileImg');
+            const inputElement = document.getElementById('profileUsernameInput');
+            
+            if (modal && imgElement && inputElement) {
+                imgElement.src = user.profilePic || 'images/default-avatar.png';
+                inputElement.value = user.username;
+                modal.style.display = 'flex';
+            }
+        }
+
+        function setupProfileListeners() {
+            const profileForm = document.getElementById('profileForm');
+            if (profileForm) {
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const newName = document.getElementById('profileUsernameInput').value;
+
+                    localStorage.setItem('customSavedUsername', newName);
+                    
+                    let savedUser = localStorage.getItem('calseUser');
+                    if(savedUser){
+                        let user = JSON.parse(savedUser);
+                        user.username = newName;
+                        localStorage.setItem('calseUser', JSON.stringify(user));
+                    }
+                    
+                    closeProfileModal();
+                    checkAuthStatus();
+                });
+            }
+
+            const uploadAvatarInput = document.getElementById('uploadAvatar');
+            if (uploadAvatarInput) {
+                uploadAvatarInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            const base64Image = event.target.result;
+                            
+                            localStorage.setItem('customSavedProfilePic', base64Image);
+                            
+                            document.getElementById('modalProfileImg').src = base64Image;
+                            
+                            let savedUser = localStorage.getItem('calseUser');
+                            let user = savedUser ? JSON.parse(savedUser) : {};
+                            user.profilePic = base64Image;
+                            localStorage.setItem('calseUser', JSON.stringify(user));
+                            
+                            checkAuthStatus();
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        }
+        </script>
+
+      <script src="game.js"></script>
 </body>
 </html>

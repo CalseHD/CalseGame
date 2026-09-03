@@ -13,7 +13,7 @@ body {
 /* Üst Kırmızı Bar (Sağ üst butonlar için güncellendi) */
 .navbar {
     background-color: #d32f2f;
-    padding: 20px 40px;            /* Yüksekliği butonlarla dengeli dursun diye hafif daralttık */
+    padding: 15px 40px;            /* Yüksekliği butonlarla dengeli dursun diye hafif daralttık */
     display: flex;
     align-items: center;
     justify-content: space-between; /* LOGOYU SOLA, BUTONLARI SAĞA İTER */
@@ -401,4 +401,26 @@ background: linear-gradient(180deg, #ff4d4d 0%, #ff0000 50%, #b30000 100%);
     display: inline-flex;
     align-items: center;
     gap: 4px; /* CALSE ile GAME arasındaki boşluğu milimetrik olarak sabitler */
+}
+/* Kategori Butonlarını Öne ve Aşağıya Hizalama */
+.nav-links {
+    margin-left: 55px;       /* Butonları sağa (öne) doğru iter */
+    position: relative;
+    top: 30px;                /* Aşağıya doğru kaydırır (gerekirse sayıyı artırabilirsin) */
+}
+/* --- Menü ve Sağ Üst Butonlar İçin Şık Hover Animasyonu --- */
+.nav-auth a, 
+.nav-links a, 
+.navbar .menu-link {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    display: inline-block;
+}
+
+.nav-auth a:hover, 
+.nav-links a:hover, 
+.navbar .menu-link:hover {
+    transform: translateY(-3px) scale(1.05); /* Hafif yukarı kalkar ve büyür */
+    color: #ffffff; /* Üzerine gelince beyaz kalmasını veya parlamasını sağlar */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
 }

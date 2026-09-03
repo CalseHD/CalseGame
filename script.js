@@ -271,3 +271,6 @@ function setupProfileListeners() {
         });
     }
 }
+// Sayfa açıldığında URL'yi kontrol et ve kategoriye göre filtrele
+
+

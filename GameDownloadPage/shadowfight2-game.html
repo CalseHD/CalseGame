@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Fight 2 İndir - CalseGame</title>
+    <link rel="icon" type="image/png" href="../images/CG.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Üst Bar (Navbar) -->
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="../index.html" class="logo-text">
+                    <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Menü -->
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">Ana Sayfa</a>
+                <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+                <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; transition: all 0.3s ease;">Mobil Oyunlar</a>
+            </nav>
+        </div>
+
+        <!-- Sağ Üst Butonlar -->
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <div class="game-detail-header">
+            <h1>Shadow Fight 2 İndir</h1>
+            <p>Gölgelerin kapısından geçerek şeytani patronlara meydan oku!</p>
+        </div>
+
+        <!-- İndirme Detay Kartı -->
+        <div style="background: #1e1e1e; border-radius: 12px; padding: 25px; border: 1px solid #333; max-width: 900px; margin: 0 auto;">
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
+                <!-- Oyun Görseli (Görsel adını kendi klasöründeki adına göre değiştirebilirsin) -->
+                <img src="../images/shadowfight2.png" alt="Shadow Fight 2" style="width: 220px; height: 280px; object-fit: cover; border-radius: 8px;">
+                <div style="flex: 1; min-width: 250px;">
+                    <h2 style="margin-bottom: 15px; color: #ff3333;">Oyun Bilgileri</h2>
+                    <ul style="list-style: none; line-height: 2; padding: 0;">
+                        <li><strong>Oyun Adı:</strong> Shadow Fight 2</li>
+                        <li><strong>Kategori:</strong> Mobil Oyun / Aksiyon / RPG</li>
+                        <li><strong>Boyut:</strong> 150 MB</li>
+                        <li><strong>Dil:</strong> Türkçe</li>
+                        <li><strong>Sürüm:</strong> Güncel (Orijinal)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sistem Gereksinimleri / Bilgiler -->
+            <div style="margin-bottom: 25px; background: #242424; padding: 15px; border-radius: 8px;">
+                <h3 style="margin-bottom: 10px; color: #fff;">İşletim Sistemi Gereksinimleri</h3>
+                <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin: 0;">
+                    <strong>Platform:</strong> Android / iOS / Mobil<br>
+                    <strong>Android Sürümü:</strong> 5.0 ve üzeri<br>
+                    <strong>İnternet:</strong> Çevrimdışı / Çevrimiçi oynanabilir
+                </p>
+            </div>
+
+            <!-- İndirme Linkleri (Google Play Store Yönlendirmesi) -->
+            <div style="text-align: center;">
+                <h3 style="margin-bottom: 15px;">İndirme Seçenekleri</h3>
+                <a href="https://play.google.com/store/apps/details?id=com.nekki.shadowfight&hl=tr" target="_blank" class="btn-download" style="background-color: #00875f; display: inline-block;">
+                    📲 Google Play Store'dan İndir
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modallar ve Script -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Oturum Aç</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="Kullanıcı Adı veya İsim" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Giriş Yap</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Giriş Yap
+            </button>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Kayıt Ol</h2>
+            <form class="auth-form">
+                <input type="text" placeholder="İsim" required>
+                <input type="email" placeholder="Gmail / E-posta" required>
+                <input type="password" placeholder="Şifre" required>
+                <button type="submit" class="btn-submit">Kayıt Ol</button>
+            </form>
+            <div class="divider">veya</div>
+            <button class="btn-google">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Google ile Kayıt Ol
+            </button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
