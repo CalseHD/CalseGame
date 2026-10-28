@@ -121,9 +121,9 @@
                 </div>
             </div>
 
-            <!-- Geri Dönüş -->
+            <!-- Geri Dönüş (Dinamik) -->
             <div style="text-align: center; margin-top: 30px;">
-                <a href="shadowfight2_mods.html" style="color: #888; text-decoration: none; font-size: 14px;">← Mod Listesine Geri Dön</a>
+                <a id="backBtn" href="shadowfight2_mods.html" style="color: #888; text-decoration: none; font-size: 14px;">← Mod Listesine Geri Dön</a>
             </div>
 
         </div>
@@ -131,8 +131,9 @@
 
     <!-- Dinamik Mod Verileri ve Slider JavaScript -->
     <script>
-        // Mod Veri Tabanı (Yeni mod eklemek istediğinde sadece buraya ekleyeceksin!)
+        // Mod Veri Tabanı
         const modsData = {
+            // SHADOW FIGHT 2 MODLARI
             "para-modu": {
                 title: "Shadow Fight 2 Sınırsız Para ve Elmas Modu",
                 subtitle: "Gölgeler dünyasında sınırsız kaynaklarla güçlü bir başlangıç yapın!",
@@ -143,7 +144,9 @@
                     "../images/shadow fight 2 mod img/photo3.png"
                 ],
                 downloadUrl: "https://drive.google.com/file/d/10YjGCv4c73ISseATTh6GS-HeUxAxPUol/view?usp=sharing",
-                videoId: "BURAYA_BIRINCI_MODUN_YOUTUBE_ID"
+                videoId: "BURAYA_BIRINCI_MODUN_YOUTUBE_ID",
+                backPage: "shadowfight2_mods.html",
+                backText: "← Shadow Fight 2 Modlarına Geri Dön"
             },
             "titan-menu": {
                 title: "Shadow Fight 2 Titan Modu",
@@ -151,27 +154,121 @@
                 desc: "Titan menü modu ile oyun içerisinde zorlandığınız yerleri kolayca geçebilir, özel hile menüsünü aktif edebilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
                 images: [
                     "../images/shadow fight 2 mod img/photo1.png",
-                    "../images/shadow fight 2 mod img/photo2.png",
-                    
+                    "../images/shadow fight 2 mod img/photo2.png"
                 ],
                 downloadUrl: "https://drive.google.com/file/d/IKINCI_MODUN_DRIVE_LINKI/view?usp=sharing",
-                videoId: "BURAYA_IKINCI_MODUN_YOUTUBE_ID"
+                videoId: "BURAYA_IKINCI_MODUN_YOUTUBE_ID",
+                backPage: "shadowfight2_mods.html",
+                backText: "← Shadow Fight 2 Modlarına Geri Dön"
+            },
+            
+            // GRAND THEFT AUTO SAN ANDREAS MODLARI
+            "gtasa-downgrade-patch": {
+                title: "Grand Theft Auto San Andreas Downgrade Patch",
+                subtitle: "Grand Theft Auto San Andreas'ı 1.0 sürümüyle oynayın!",
+                desc: "Bu patch ile Grand Theft Auto San Andreas'ı 1.0 sürümüne downgrade ederek modlamaya başlayabilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasamod.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1sT-B75hB37WB9HE8Ro45LtBh0MiC2q_K/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+            "gtasa-cleo-mod": {
+                title: "Grand Theft Auto San Andreas CLEO 5",
+                subtitle: "CLEO sayesinde Grand Theft Auto San Andreas'ı modlamaya başlayın!",
+                desc: "Bu eklenti ile Grand Theft Auto San Andreas'a birçok mod ekleyebilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasamod.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1wTNR8gYzXPe3vOM_Lx9Svui0YYjfnz8q/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+            "gtasa-modloader": {
+                title: "Grand Theft Auto San Andreas Modloader",
+                subtitle: "Modloader ile Grand Theft Auto San Andreas'a birçok mod ekleyin!",
+                desc: "Bu eklenti ile Grand Theft Auto San Andreas'a birçok mod ekleyebilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasamod.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1YVR8BxCN3UyUM_gv2fb6pn16Bv7pqfkR/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+            "gtasa-silentpatch": {
+                title: "Grand Theft Auto San Andreas Silent Patch",
+                subtitle: "Silent Patch ile Grand Theft Auto San Andreas'ı daha iyi bir şekilde oynayın!",
+                desc: "Bu patch ile Grand Theft Auto San Andreas'ın birçok sorununu çözebilir ve 1080p çözünürlükte oynayabilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasamod.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1tKXpztRMc_d24_H5E9KY1dwNPW8IIOpA/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+            "gtasa-frameratevigilante": {
+                title: "Grand Theft Auto San Andreas Framerate Vigilante",
+                subtitle: "Framerate Vigilante ile Grand Theft Auto San Andreas'ı daha akıcı oynayın!",
+                desc: "Bu mod sayesinde oyununuzun FPS kilidinin sınırını istediginiz gibi ayarlayabilir ve oyununuzu daha akıcı hale getirebilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasamod.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1wpV1NuGjgdXMNJ4dBFMZgf1OQL_bfuoj/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+             "gtasa-widescreenfix": {
+                title: "Grand Theft Auto San Andreas Widescreen Fix",
+                subtitle: "Widescreen Fix ile Grand Theft Auto San Andreas'ı daha iyi bir şekilde oynayın!",
+                desc: "Bu mod sayesinde basıklıkları ve görsel bozulmaları düzeltip oyununuzu daha iyi bir şekilde oynayabilirsiniz.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasaWidescreenFix.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/10BVz3GKLASJ-uWh59jPSMoSlgIICbCtY/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
+            },
+            "gtasa-rzltrainer": {
+                title: "Grand Theft Auto San Andreas RZL Trainer",
+                subtitle: "RZL Trainer ile Grand Theft Auto San Andreas'da bir çok şey yapabilirsiniz!",
+                desc: "RZL Trainer ile istediginiz silahları,kiyafetleri ve diğer özellikleri kullanabilirsiniz.RZL Trainer açmak için F2 tuşuna basını.<br><br>NOT: Kurulum adımlarını videodan dikkatlice takip ediniz.",
+                images: [
+                    "../images/gta sa mod img/gtasaRZLTrainer.png"
+                ],
+                downloadUrl: "https://drive.google.com/file/d/1hW94FdsT9W6sy6_1_WnxFDM-SU3ahqZF/view?usp=sharing",
+                videoId: "BURAYA_YOUTUBE_ID",
+                backPage: "gtasa_mods.html",
+                backText: "← GTA San Andreas Modlarına Geri Dön"
             }
+            
+
         };
 
         // URL'den ?mod=... parametresini al
         const urlParams = new URLSearchParams(window.location.search);
-        const modKey = urlParams.get('mod') || 'para-modu'; // Eğer parametre yoksa varsayılan olarak para-modu açılır
+        const modKey = urlParams.get('mod') || 'para-modu'; 
 
         const currentMod = modsData[modKey] || modsData['para-modu'];
 
-        // HTML elemanlarını doldur
+        // HTML elemanlarını dinamik olarak doldur
         document.getElementById('pageTitle').textContent = currentMod.title + " - CalseGame";
         document.getElementById('modTitle').textContent = currentMod.title;
         document.getElementById('modSubtitle').textContent = currentMod.subtitle;
         document.getElementById('modDesc').innerHTML = currentMod.desc;
         document.getElementById('downloadBtn').href = currentMod.downloadUrl;
         document.getElementById('videoIframe').src = "https://www.youtube.com/embed/" + currentMod.videoId;
+
+        // Geri Dönüş Linkini Modun Türüne Göre Ayarla
+        const backBtn = document.getElementById('backBtn');
+        backBtn.href = currentMod.backPage;
+        backBtn.textContent = currentMod.backText;
 
         // Slider Görsellerini Dinamik Ekle
         const sliderContainer = document.getElementById('sliderContainer');
@@ -180,7 +277,6 @@
             img.src = imgSrc;
             img.className = index === 0 ? 'slide active' : 'slide';
             img.alt = "Görsel " + (index + 1);
-            // Butonlardan önce ekle
             sliderContainer.insertBefore(img, sliderContainer.querySelector('.prev'));
         });
 

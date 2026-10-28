@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Theft Auto: San Andreas Modları - CalseGame</title>
+    <link rel="icon" type="image/png" href="../images/CG.png">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <!-- Üst Bar (Navbar) -->
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="logo">
+                <a href="../index.html" class="logo-text">
+                    <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1);">Ana Sayfa</a>
+                <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+                <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px;">Mobil Oyunlar</a>
+            </nav>
+        </div>
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container">
+        <div class="game-detail-header">
+            <h1>Grand Theft Auto: San Andreas Modları</h1>
+            <p>Grand Theft Auto: San Andreas için en popüler modları aşağıdan inceleyebilirsin.</p>
+        </div>
+
+        <!-- Arama Çubuğu (İleride mod çoğaltırsan diye kalabilir) -->
+        <div style="max-width: 600px; margin: 0 auto 30px auto; text-align: center;">
+            <input type="text" id="modSearchInput" placeholder="Mod ara..." 
+                style="width: 100%; padding: 12px 20px; border-radius: 8px; border: 1px solid #444; background: #1e1e1e; color: white; font-size: 16px; outline: none;"
+                onkeyup="searchMods()">
+        </div>
+
+        <!-- Modlar Listesi (Tek Mod) -->
+        <div id="modList" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+            
+            <!-- Birinci Mod Kartı -->
+            <a href="mods_download.html?mod=gtasa-downgrade-patch" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                <div>
+                    <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Downgrade Patch</h3>
+                    <p style="margin: 0; color: #aaa; font-size: 14px;">Orijinal GTA: SA oyununu daha eski bir sürüm gibi çalıştırır.</p>
+                </div>
+                <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+            </a>
+
+            <!-- İkinci Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-cleo-mod" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA CLEO Modu</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">CLEO eklentisi ile GTA: SA'ya birçok mod ekleyin.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+             <!-- Üçüncü Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-modloader" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Modloader</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">Modloader ile GTA: SA'ya birçok mod ekleyin.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+             <!-- Dördüncü Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-silentpatch" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Silent Patch</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">Silent Patch ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+             <!-- Beşinci Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-frameratevigilante" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Framerate Vigilante</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">Framerate Vigilante ile GTA: SA'yi daha akıcı oynayın.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+             <!-- Altıncı Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-widescreenfix" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Widescreen Fix</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">Widescreen Fix ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+             <!-- Yedinci Mod Kartı -->
+             <a href="mods_download.html?mod=gtasa-rzltrainer" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
+                 <div>
+                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA RZL Trainer</h3>
+                     <p style="margin: 0; color: #aaa; font-size: 14px;">RZL Trainer ile GTA: SA'da bir çok şey yapabilirsiniz.</p>
+                 </div> 
+                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+             </a>
+
+
+
+        </div>
+    </main>
+
+    <!-- Arama Scripti -->
+    <script>
+        function searchMods() {
+            let input = document.getElementById('modSearchInput').value.toLowerCase();
+            let items = document.querySelectorAll('.mod-item');
+
+            items.forEach(item => {
+                let text = item.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>
