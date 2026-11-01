@@ -34,163 +34,219 @@
     </header>
 
     <!-- Ana İçerik -->
-    <main class="container">
+    <main class="container" style="padding: 20px;">
         <div class="game-detail-header">
             <h1>Grand Theft Auto: San Andreas Modları</h1>
             <p>Grand Theft Auto: San Andreas için en popüler modları aşağıdan inceleyebilirsin.</p>
         </div>
 
-        <!-- Arama Çubuğu (İleride mod çoğaltırsan diye kalabilir) -->
+        <!-- Arama Çubuğu -->
         <div style="max-width: 600px; margin: 0 auto 30px auto; text-align: center;">
             <input type="text" id="modSearchInput" placeholder="Mod ara..." 
                 style="width: 100%; padding: 12px 20px; border-radius: 8px; border: 1px solid #444; background: #1e1e1e; color: white; font-size: 16px; outline: none;"
                 onkeyup="searchMods()">
         </div>
 
-        <!-- Modlar Listesi (Tek Mod) -->
-        <div id="modList" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+        <!-- Modlar Izgarası (Grid Container) -->
+        <div id="modList" class="mods-grid">
             
-            <!-- Birinci Mod Kartı -->
-            <a href="mods_download.html?mod=gtasa-downgrade-patch" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                <div>
-                    <h3 style="margin: 0 0 5px 0; color: #ff4d4d;">GTA: SA Downgrade Patch</h3>
-                    <p style="margin: 0; color: #aaa; font-size: 14px;">Orijinal Grand Theft Auto San Andreas'ı 1.0 sürümüne downgrade eder.</p>
+            <!-- 1. GTA: SA Downgrade Patch -->
+            <a href="mods_download.html?mod=gtasa-downgrade-patch" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasamod.png" alt="GTA: SA Downgrade Patch">
                 </div>
-                <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
+                <div class="mod-content">
+                    <h3>GTA: SA Downgrade Patch</h3>
+                    <p>Orijinal Grand Theft Auto San Andreas'ı 1.0 sürümüne downgrade eder.</p>
+                </div>
             </a>
 
-            <!-- İkinci Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-cleo" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> CLEO 5</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">CLEO eklentisi ile GTA: SA'ya birçok mod ekleyin.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-cleoplus" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> CLEO Plus</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">CLEO eklentisi ile GTA: SA'ya birçok mod ekleyin.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Üçüncü Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-modloader" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Modloader</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Modloader ile GTA: SA'ya birçok mod ekleyin.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Dördüncü Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-dyom" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> DYOM</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">DYOM (Design Own Your Mission) ile kendi görevlerinizi oluşturun.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Dördüncü Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-silentpatch" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Silent Patch</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Silent Patch ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Beşinci Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-frameratevigilante" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Framerate Vigilante</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Framerate Vigilante ile GTA: SA'yi daha akıcı oynayın.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Altıncı Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-widescreenfix" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Widescreen Fix</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Widescreen Fix ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Yedinci Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-rzltrainer" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> RZL Trainer</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">RZL Trainer ile GTA: SA'da bir çok şey yapabilirsiniz.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-                <!-- Sekizinci Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-lightsunnygraphics" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Lights Sunny Graphics</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyunun görsel kalitesini artırır.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <!-- Dokuzuncu Mod Kartı -->
-             <a href="mods_download.html?mod=gtasa-atmosphereinterfacepack" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Atmosphere Interface Pack</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyun menüsünü ve haritayı HD yapar.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-crashinfo" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Crash Info</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyunun çökme bilgilerini gösterir.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-mixsets" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Mix Sets</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyundaki bazı haataları düzeltir.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-openlimitadjuster" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Open Limit Adjuster</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyundaki bazı sınırları ayarlar.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-              <a href="mods_download.html?mod=gtasa-txdworkshop" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> TXD Workshop</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyundaki TXD dosyalarını düzenler.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-loadscreens4k" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Load Screens 4K</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyundaki yükleme ekranlarını 4K yapar.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-hdmovies" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> HD Movies</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Başlangıç introsunu HD yapar.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             <a href="mods_download.html?mod=gtasa-remasteredparticles" class="mod-item" style="display: flex; justify-content: space-between; align-items: center; background: #1e1e1e; padding: 20px; border-radius: 10px; border: 1px solid #333; text-decoration: none; color: white; transition: 0.3s;">
-                 <div>
-                     <h3 style="margin: 0 0 5px 0; color: #ff4d4d;"> Remastered Particles</h3>
-                     <p style="margin: 0; color: #aaa; font-size: 14px;">Oyundaki efekti daha iyi yapar.</p>
-                 </div> 
-                 <span style="background: #ff4d4d; color: white; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;">İndir →</span>
-             </a>
-             
+            <!-- 2. CLEO 5 -->
+            <a href="mods_download.html?mod=gtasa-cleo" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/cleo5.png" alt="CLEO 5">
+                </div>
+                <div class="mod-content">
+                    <h3>CLEO 5</h3>
+                    <p>CLEO eklentisi ile GTA: SA'ya birçok mod ekleyin.</p>
+                </div>
+            </a>
 
+            <!-- 3. CLEO Plus -->
+            <a href="mods_download.html?mod=gtasa-cleoplus" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/cleoplus.png" alt="CLEO Plus">
+                </div>
+                <div class="mod-content">
+                    <h3>CLEO Plus</h3>
+                    <p>CLEO eklentisi ile GTA: SA'ya birçok mod ekleyin.</p>
+                </div>
+            </a>
 
+            <!-- 4. Modloader -->
+            <a href="mods_download.html?mod=gtasa-modloader" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/modloader.png" alt="Modloader">
+                </div>
+                <div class="mod-content">
+                    <h3>Modloader</h3>
+                    <p>Modloader ile GTA: SA'ya birçok mod ekleyin.</p>
+                </div>
+            </a>
 
+            <!-- 5. DYOM -->
+            <a href="mods_download.html?mod=gtasa-dyom" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/dyom.png" alt="DYOM">
+                </div>
+                <div class="mod-content">
+                    <h3>DYOM</h3>
+                    <p>DYOM (Design Own Your Mission) ile kendi görevlerinizi oluşturun.</p>
+                </div>
+            </a>
+
+            <!-- 6. Silent Patch -->
+            <a href="mods_download.html?mod=gtasa-silentpatch" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/silentpatch.png" alt="Silent Patch">
+                </div>
+                <div class="mod-content">
+                    <h3>Silent Patch</h3>
+                    <p>Silent Patch ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
+                </div>
+            </a>
+
+            <!-- 7. Framerate Vigilante -->
+            <a href="mods_download.html?mod=gtasa-frameratevigilante" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/frameratevigilante.png" alt="Framerate Vigilante">
+                </div>
+                <div class="mod-content">
+                    <h3>Framerate Vigilante</h3>
+                    <p>Framerate Vigilante ile GTA: SA'yi daha akıcı oynayın.</p>
+                </div>
+            </a>
+
+            <!-- 8. Widescreen Fix -->
+            <a href="mods_download.html?mod=gtasa-widescreenfix" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasaWidescreenFix.png" alt="Widescreen Fix">
+                </div>
+                <div class="mod-content">
+                    <h3>Widescreen Fix</h3>
+                    <p>Widescreen Fix ile GTA: SA'yi daha iyi bir şekilde oynayın.</p>
+                </div>
+            </a>
+
+            <!-- 9. RZL Trainer -->
+            <a href="mods_download.html?mod=gtasa-rzltrainer" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasaRZLTrainer.png" alt="RZL Trainer">
+                </div>
+                <div class="mod-content">
+                    <h3>RZL Trainer</h3>
+                    <p>RZL Trainer ile GTA: SA'da birçok şey yapabilirsiniz.</p>
+                </div>
+            </a>
+
+            <!-- 10. Lights Sunny Graphics -->
+            <a href="mods_download.html?mod=gtasa-lightsunnygraphics" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/lsg1.png" alt="Lights Sunny Graphics">
+                </div>
+                <div class="mod-content">
+                    <h3>Lights Sunny Graphics</h3>
+                    <p>Oyunun görsel kalitesini artırır.</p>
+                </div>
+            </a>
+
+            <!-- 11. Atmosphere Interface Pack -->
+            <a href="mods_download.html?mod=gtasa-atmosphereinterfacepack" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/hd_mini_map.png" alt="Atmosphere Interface Pack">
+                </div>
+                <div class="mod-content">
+                    <h3>Atmosphere Interface Pack</h3>
+                    <p>Oyun menüsünü ve haritayı HD yapar.</p>
+                </div>
+            </a>
+
+            <!-- 12. Crash Info -->
+            <a href="mods_download.html?mod=gtasa-crashinfo" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasamod.png" alt="Crash Info">
+                </div>
+                <div class="mod-content">
+                    <h3>Crash Info</h3>
+                    <p>Oyunun çökme bilgilerini gösterir.</p>
+                </div>
+            </a>
+
+            <!-- 13. Mix Sets -->
+            <a href="mods_download.html?mod=gtasa-mixsets" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasamod.png" alt="Mix Sets">
+                </div>
+                <div class="mod-content">
+                    <h3>Mix Sets</h3>
+                    <p>Oyundaki bazı hataları düzeltir.</p>
+                </div>
+            </a>
+
+            <!-- 14. Open Limit Adjuster -->
+            <a href="mods_download.html?mod=gtasa-openlimitadjuster" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasamod.png" alt="Open Limit Adjuster">
+                </div>
+                <div class="mod-content">
+                    <h3>Open Limit Adjuster</h3>
+                    <p>Oyundaki bazı sınırları ayarlar.</p>
+                </div>
+            </a>
+
+            <!-- 15. TXD Workshop -->
+            <a href="mods_download.html?mod=gtasa-txdworkshop" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/txd_workshop.png" alt="TXD Workshop">
+                </div>
+                <div class="mod-content">
+                    <h3>TXD Workshop</h3>
+                    <p>Oyundaki TXD dosyalarını düzenler.</p>
+                </div>
+            </a>
+
+            <!-- 16. Load Screens 4K -->
+            <a href="mods_download.html?mod=gtasa-loadscreens4k" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/loadscreen.png" alt="Load Screens 4K">
+                </div>
+                <div class="mod-content">
+                    <h3>Load Screens 4K</h3>
+                    <p>Oyundaki yükleme ekranlarını 4K yapar.</p>
+                </div>
+            </a>
+
+            <!-- 17. HD Movies -->
+            <a href="mods_download.html?mod=gtasa-hdmovies" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/gtasamod.png" alt="HD Movies">
+                </div>
+                <div class="mod-content">
+                    <h3>HD Movies</h3>
+                    <p>Başlangıç introsunu HD yapar.</p>
+                </div>
+            </a>
+
+            <!-- 18. Remastered Particles -->
+            <a href="mods_download.html?mod=gtasa-remasteredeffects" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta sa mod img/remasteredeffects.png" alt="Remastered Effects">
+                </div>
+                <div class="mod-content">
+                    <h3>Remastered Effects</h3>
+                    <p>Oyundaki efektleri daha iyi yapar.</p>
+                </div>
+            </a>
 
         </div>
     </main>
