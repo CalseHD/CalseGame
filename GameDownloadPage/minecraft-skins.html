@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Skinleri - CalseGame</title>
+    <link rel="icon" type="image/png" href="../images/CG.png">
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- 3D Skin Görüntüleyici Kütüphanesi (Steve ve Alex İçin) -->
+    <script src="https://unpkg.com/skinview3d@latest/bundles/skinview3d.bundle.js"></script>
+    
+    <!-- OBJ Modelleri (Köylü vb.) İçin Three.js ve Loader Kütüphaneleri -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <style>
+        .skins-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skin-viewer-box {
+            flex: 1;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 90px;
+        }
+
+        .skin-viewer-box h2 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        /* Normal Karakterler İçin Kutu */
+        #skin-container {
+            width: 100%;
+            height: 380px;
+            background: #121212;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        /* OBJ Model (Köylü) İçin Kutu */
+        #obj-container {
+            width: 100%;
+            height: 380px;
+            background: #121212;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            cursor: grab;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        #skin-container:active, #obj-container:active {
+            cursor: grabbing;
+        }
+
+        #skin-container canvas, #obj-container canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Skini İndir Butonu Tasarımı */
+        .btn-download-skin {
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(255, 51, 51, 0.3);
+        }
+
+        .btn-download-skin:hover {
+            background-color: #e02e2e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+        }
+
+        /* Sağ taraf arama kutusu ve liste sarmalayıcısı */
+        .skin-list-wrapper {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skin-search-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .skin-search-input:focus {
+            border-color: #ff3333;
+            box-shadow: 0 0 8px rgba(255, 51, 51, 0.2);
+        }
+
+        .skin-list-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .skin-card {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .skin-card:hover, .skin-card.active {
+            border-color: #ff3333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 51, 51, 0.2);
+        }
+
+        .skin-card img {
+            width: 100px !important;
+            height: 140px !important;
+            object-fit: contain !important;
+            margin: 5px auto;
+            display: block;
+            image-rendering: pixelated;
+            transform: scale(1.7);
+            transform-origin: center;
+        }
+
+        .skin-card h4 {
+            color: #fff;
+            margin-top: 5px;
+            margin-bottom: 0;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 850px) {
+            .skins-container {
+                flex-direction: column;
+            }
+            .skin-viewer-box {
+                position: static;
+                width: 100%;
+            }
+            .skin-list-wrapper {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="logo">
+                <a href="../index.html" class="logo-text">
+                    <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1);">Ana Sayfa</a>
+                <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1);">PC Oyunları</a>
+                <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px;">Mobil Oyunlar</a>
+            </nav>
+        </div>
+
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        
+        <div class="game-detail-header" style="text-align: center; margin-bottom: 30px;">
+            <h1>Minecraft Skinleri</h1>
+            <p>Hazır skinleri seçerek 3D model üzerinde canlı olarak inceleyin.</p>
+        </div>
+
+        <div class="skins-container">
+            
+            <!-- SOL TARAF: 3D Önizleme ve İndir Butonu -->
+            <div class="skin-viewer-box">
+                <h2 id="active-skin-title">Steve</h2>
+                
+                <!-- Normal İnsan Modelleri İçin Kutu -->
+                <div id="skin-container"></div>
+                
+                <!-- OBJ Model (Köylü) İçin Kutu (Başlangıçta Gizli) -->
+                <div id="obj-container" style="display: none;"></div>
+
+                <!-- Skini İndir Butonu -->
+                <a id="download-btn" href="../images/minecraft_img/steve.png" download="steve_skin.png" class="btn-download-skin">
+                    Skini İndir
+                </a>
+            </div>
+
+            <!-- SAĞ TARAF: Arama Çubuğu ve Skin Listesi -->
+            <div class="skin-list-wrapper">
+                <input type="text" id="skinSearchInput" class="skin-search-input" placeholder="🔍 Skin ara..." onkeyup="filterSkins()">
+
+                <div class="skin-list-box" id="skinListContainer">
+                    
+                    <!-- Skin 1 (Steve) -->
+                    <div class="skin-card active" onclick="selectSkin('Steve', '../images/minecraft_img/steve.png', this, false)">
+                        <img src="../images/minecraft_img/body/stevebody.png" alt="Steve">
+                        <h4>Steve</h4>
+                    </div>
+
+                    <!-- Skin 2 (Alex) -->
+                    <div class="skin-card" onclick="selectSkin('Alex', '../images/minecraft_img/alex.png', this, false)">
+                        <img src="../images/minecraft_img/body/alexbody.png" alt="Alex">
+                        <h4>Alex</h4>
+                    </div>
+
+                    <!-- Skin 3 (Calse) -->
+                    <div class="skin-card" onclick="selectSkin('Calse', '../images/minecraft_img/calsehd.png', this, false)">
+                        <img src="../images/minecraft_img/body/calsehdbody.png" alt="Calse">
+                        <h4>Calse</h4>
+                    </div>
+
+                    <!-- Skin 4 (Galatasaraylı Calse) -->
+                    <div class="skin-card" onclick="selectSkin('GS Calse', '../images/minecraft_img/galatasaraylı calse.png', this, false)">
+                        <img src="../images/minecraft_img/body/gscalsebody.png" alt="GS Calse">
+                        <h4>GS Calse</h4>
+                    </div>
+
+                    <!-- Skin 5 (Builder Calse) -->
+                    <div class="skin-card" onclick="selectSkin('Builder Calse', '../images/minecraft_img/buildercalse.png', this, false)">
+                        <img src="../images/minecraft_img/body/buildercalsebody.png" alt="Builder Calse">
+                        <h4>Builder Calse</h4>
+                    </div>
+                    
+                    <!-- Skin 6 (Ferited) -->
+                    <div class="skin-card" onclick="selectSkin('Ferited', '../images/minecraft_img/ferited.png', this, false)">
+                        <img src="../images/minecraft_img/body/feritedbody.png" alt="Ferited">
+                        <h4>Ferited</h4>
+                    </div>
+
+                    <!-- Skin 7 (Ferited 2) -->
+                    <div class="skin-card" onclick="selectSkin('Ferited 2', '../images/minecraft_img/ikizferited.png', this, false)">
+                        <img src="../images/minecraft_img/body/ferited2body.png" alt="Ferited 2">
+                        <h4>Ferited 2</h4>
+                    </div>
+
+                    <!-- Skin 8 (Köylü / Villager - OBJ Model, en sonda true yazar) -->
+                    <div class="skin-card" onclick="selectSkin('Köylü', '../images/minecraft_img/richvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/richvillagerbody.png" alt="Köylü">
+                        <h4>Köylü</h4>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        let skinViewer;
+        let objScene, objCamera, objRenderer, objControls;
+        let isObjInitialized = false;
+
+        let currentSkinUrl = "../images/minecraft_img/steve.png";
+        let currentSkinName = "steve";
+
+        window.onload = function() {
+            // Normal SkinViewer Kurulumu (Steve ile başlar)
+            skinViewer = new skinview3d.SkinViewer({
+                canvas: document.createElement("canvas"),
+                width: 260,
+                height: 360,
+                skin: currentSkinUrl
+            });
+
+            const container = document.getElementById("skin-container");
+            container.appendChild(skinViewer.canvas);
+
+            skinViewer.camera.position.x = 0;
+            skinViewer.camera.position.y = 0;
+            skinViewer.camera.position.z = 60;
+            skinViewer.autoRotate = true;
+            skinViewer.autoRotateSpeed = 0.5;
+
+            let control = skinview3d.createOrbitControls(skinViewer);
+            control.enableZoom = true;
+        };
+
+        function selectSkin(name, skinUrl, cardElement, isObj) {
+            document.getElementById("active-skin-title").innerText = name;
+
+            // İndir butonunu güncelle
+            currentSkinUrl = skinUrl;
+            currentSkinName = name.toLowerCase().replace(/\s+/g, '_');
+            const downloadBtn = document.getElementById("download-btn");
+            downloadBtn.href = currentSkinUrl;
+            downloadBtn.download = `${currentSkinName}_skin.png`;
+
+            // Aktif kart sınıfını değiştir
+            const cards = document.querySelectorAll('.skin-card');
+            cards.forEach(card => card.classList.remove('active'));
+            cardElement.classList.add('active');
+
+            if (isObj) {
+                // Eğer seçilen OBJ modeliyse (Köylü)
+                document.getElementById("skin-container").style.display = "none";
+                document.getElementById("obj-container").style.display = "flex";
+                loadVillagerObjModel(skinUrl);
+            } else {
+                // Eğer normal model ise (Steve, Alex vs.)
+                document.getElementById("obj-container").style.display = "none";
+                document.getElementById("skin-container").style.display = "flex";
+                if (skinViewer) {
+                    skinViewer.loadSkin(skinUrl);
+                }
+            }
+        }
+
+        // OBJ Köylü Modelini Yükleme Fonksiyonu (Merkez hizalamalı)
+        function loadVillagerObjModel(textureUrl) {
+            const container = document.getElementById("obj-container");
+
+            if (!isObjInitialized) {
+                objScene = new THREE.Scene();
+
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+                objScene.add(ambientLight);
+                
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
+                directionalLight.position.set(10, 20, 10);
+                objScene.add(directionalLight);
+
+                // Kamerayı modele yaklaştırıp ortalıyoruz
+                objCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+                objCamera.position.set(0, 0.8, 5);
+
+                objRenderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                objRenderer.setSize(container.clientWidth, container.clientHeight);
+                container.appendChild(objRenderer.domElement);
+
+                objControls = new THREE.OrbitControls(objCamera, objRenderer.domElement);
+                objControls.enableDamping = true;
+                objControls.target.set(0, 0.4, 0); // Odak noktasını modelin tam ortasına getir
+
+                isObjInitialized = true;
+
+                function animateObj() {
+                    requestAnimationFrame(animateObj);
+                    objControls.update();
+                    // Modeli yavaşça kendi etrafında döndür
+                    if (objScene.children.length > 2) {
+                        objScene.children[2].rotation.y += 0.01;
+                    }
+                    objRenderer.render(objScene, objCamera);
+                }
+                animateObj();
+            }
+
+            // Texture (Kaplama) ve OBJ Yükleme İşlemi
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.load(textureUrl, function(texture) {
+                texture.magFilter = THREE.NearestFilter; // Minecraft piksellerinin net kalması için
+                texture.minFilter = THREE.NearestFilter;
+
+                const objLoader = new THREE.OBJLoader();
+                // models klasöründeki villager.obj dosyasını çağırıyoruz
+                objLoader.load('../models/villager.obj', function(object) {
+                    
+                    // Eski modeli temizle
+                    if (objScene.children.length > 2) {
+                        objScene.remove(objScene.children[2]);
+                    }
+
+                    // Kaplamayı modele giydir ve görünmeyen kısımları çift taraflı render et
+                    object.traverse(function(child) {
+                        if (child.isMesh) {
+                            child.material = new THREE.MeshStandardMaterial({
+                                map: texture,
+                                transparent: true,
+                                alphaTest: 0.5, // Şeffaflık hatalarını çözer
+                                side: THREE.DoubleSide // Modelin iç/arka yüzlerinin kaybolmasını engeller
+                            });
+                        }
+                    });
+
+                    // Modelin konum ve boyut ayarları (Dikeyde yukarı taşındı, artık tam ortada)
+                    object.scale.set(1.2, 1.2, 1.2);
+                    object.position.set(0, -1, 0);
+
+                    objScene.add(object);
+                });
+            });
+        }
+
+        // Arama/Filtreleme Fonksiyonu
+        function filterSkins() {
+            const input = document.getElementById('skinSearchInput');
+            const filter = input.value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.skin-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h4').innerText.toLowerCase();
+                if (title.includes(filter)) {
+                    card.style.display = ""; 
+                } else {
+                    card.style.display = "none"; 
+                }
+            });
+        }
+    </script>
+    <script src="../script.js"></script>
+</body>
+</html>
