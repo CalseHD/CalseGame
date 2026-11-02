@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </form>
                     <div class="divider">veya</div>
                     <!-- Google Giriş Butonu Konteyneri -->
-                    <div id="googleLoginBtnContainer" style="display: flex; justify-content: center; margin-top: 10px;"></div>
+                    <div id="googleLoginBtnContainer" style="display: flex; justify-content: center; margin-top: 10px; min-height: 40px;"></div>
                 </div>
             </div>
 
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </form>
                     <div class="divider">veya</div>
                     <!-- Google Kayıt Butonu Konteyneri -->
-                    <div id="googleRegisterBtnContainer" style="display: flex; justify-content: center; margin-top: 10px;"></div>
+                    <div id="googleRegisterBtnContainer" style="display: flex; justify-content: center; margin-top: 10px; min-height: 40px;"></div>
                 </div>
             </div>
 
@@ -160,14 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginBtn) {
         loginBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if(loginModal) loginModal.style.display = 'flex';
+            if(loginModal) {
+                loginModal.style.display = 'flex';
+                setTimeout(initGoogleSignIn, 50); // Modal açıldığı an butonun yüklenmesini garantile
+            }
         });
     }
 
     if (registerBtn) {
         registerBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            if(registerModal) registerModal.style.display = 'flex';
+            if(registerModal) {
+                registerModal.style.display = 'flex';
+                setTimeout(initGoogleSignIn, 50); // Modal açıldığı an butonun yüklenmesini garantile
+            }
         });
     }
 
@@ -188,22 +194,28 @@ document.addEventListener('DOMContentLoaded', () => {
     setupProfileListeners();
 });
 
-// --- 3. GOOGLE GİS BAŞLATICI ---
+// --- 3. GOOGLE GİS BAŞLATICI (GÜVENLİ VE KARARLI) ---
 function initGoogleSignIn() {
     if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-        google.accounts.id.initialize({
-            client_id: "906297734505-5as4t6t523o2l9309593n9pcaatfvoi8.apps.googleusercontent.com", // Kendi Client ID'ni buraya yaz
-            callback: handleCredentialResponse
-        });
+        try {
+            google.accounts.id.initialize({
+                client_id: "906297734505-5as4t6t523o2l9309593n9pcaatfvoi8.apps.googleusercontent.com", // Kendi Client ID'ni buraya yaz
+                callback: handleCredentialResponse
+            });
 
-        const loginContainer = document.getElementById('googleLoginBtnContainer');
-        if (loginContainer && loginContainer.innerHTML === '') {
-            google.accounts.id.renderButton(loginContainer, { theme: "filled_black", size: "large", width: "100%" });
-        }
+            const loginContainer = document.getElementById('googleLoginBtnContainer');
+            if (loginContainer) {
+                loginContainer.innerHTML = ''; 
+                google.accounts.id.renderButton(loginContainer, { theme: "filled_black", size: "large", width: "100%" });
+            }
 
-        const registerContainer = document.getElementById('googleRegisterBtnContainer');
-        if (registerContainer && registerContainer.innerHTML === '') {
-            google.accounts.id.renderButton(registerContainer, { theme: "filled_black", size: "large", width: "100%" });
+            const registerContainer = document.getElementById('googleRegisterBtnContainer');
+            if (registerContainer) {
+                registerContainer.innerHTML = ''; 
+                google.accounts.id.renderButton(registerContainer, { theme: "filled_black", size: "large", width: "100%" });
+            }
+        } catch (error) {
+            console.error("Google Sign-In render hatası:", error);
         }
     }
 }
