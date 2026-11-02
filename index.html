@@ -232,14 +232,14 @@
 
     </main>
 
-    <div id="loginModal" class="modal">
+   <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">&times;</span>
-            <h2>Oturum Aç </h2>
+            <h2>Oturum Aç</h2>
             <form class="auth-form">
                 <input type="text" placeholder="Kullanıcı Adı veya İsim" required>
                 <input type="password" placeholder="Şifre" required>
-                <button type="submit" class="btn-submit">Giriş Yap</button>
+                <button type="submit" style="background-color: #ff3333; color: white; border: none; padding: 10px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;">Giriş Yap</button>
             </form>
             <div class="divider">veya</div>
             
@@ -262,8 +262,18 @@
                 <input type="text" placeholder="İsim" required>
                 <input type="email" placeholder="Gmail / E-posta" required>
                 <input type="password" placeholder="Şifre" required>
-                <button type="submit" class="btn-submit">Kayıt Ol</button>
+                <button type="submit" style="background-color: #ff3333; color: white; border: none; padding: 10px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s;">Kayıt Ol</button>
             </form>
+            <div class="divider">veya</div>
+            
+            <div style="width: 100%; margin-top: 10px; display: flex; flex-direction: column; align-items: center;">
+                <div id="g_id_onload"
+                     data-client_id="client id olacak"
+                     data-callback="handleCredentialResponse"
+                     data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin" data-type="standard" data-size="large" data-width="100%" data-theme="filled_black"></div>
+           </div>
         </div>
     </div>
 
@@ -571,8 +581,14 @@
                 });
             }
         }
+        // --- 7. ANA SAYFA GEÇMİŞ VE ÖNBELLEK GÜNCELLEYİCİ ---
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted || performance.navigation.type === 2) {
+                window.location.reload();
+            }
+        });
         </script>
+      
 
       <script src="game.js"></script>
-</body>
 </html>
