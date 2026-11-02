@@ -380,9 +380,10 @@ function setupProfileListeners() {
         });
     }
 }
-// Sayfa tarayıcı önbelleğinden (geri/ileri tuşuyla) yüklendiyse otomatik olarak yenile
+// --- 8. TARİHÇE VE ÖNBELLEK (BACK/FORWARD) OTURUM GÜNCELLEYİCİ ---
 window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
-        window.location.reload();
+    // Sayfa önbellekten veya geri/ileri butonlarıyla yüklendiyse her defasında kontrol et ve güncelle
+    if (event.persisted || performance.navigation.type === 2) {
+        checkAuthStatus();
     }
 });
