@@ -380,9 +380,9 @@ function setupProfileListeners() {
         });
     }
 }
-// --- 8. SEKME VE SAYFALAR ARASI ANLIK OTURUM SENRONİZASYONU ---
-window.addEventListener('storage', (e) => {
-    if (e.key === 'calseUser') {
-        checkAuthStatus();
+// Sayfa tarayıcı önbelleğinden (geri/ileri tuşuyla) yüklendiyse otomatik olarak yenile
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        window.location.reload();
     }
 });
