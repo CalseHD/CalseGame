@@ -380,3 +380,9 @@ function setupProfileListeners() {
         });
     }
 }
+// --- 8. SEKME VE SAYFALAR ARASI ANLIK OTURUM SENRONİZASYONU ---
+window.addEventListener('storage', (e) => {
+    if (e.key === 'calseUser') {
+        checkAuthStatus();
+    }
+});
