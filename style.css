@@ -494,21 +494,14 @@ background: linear-gradient(180deg, #ff4d4d 0%, #ff0000 50%, #b30000 100%);
 .mod-btn:hover {
     background: #ff3333;
 }
-/* Alt taraftaki fazla boşluğu ve yatay kaydırmayı önler */
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+/* Sadece alt taraftaki gereksiz siyah boşluğu keser, tasarımı bozmaz */
+html {
+    height: 100%;
+    background-color: #121212; /* Sitenizin arkaplan rengiyle aynı olmalı */
 }
 
-/* Ana içeriğin yüksekliğini otomatik yapar, gereksiz boşluk bırakmaz */
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-main, .container {
-    flex: 1;
+    min-height: 100%;
+    margin: 0;
+    padding-bottom: 0 !important;
 }
