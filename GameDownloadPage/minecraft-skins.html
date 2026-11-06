@@ -116,6 +116,37 @@
             gap: 15px;
         }
 
+        /* Kategori Sekme Butonları */
+        .skin-category-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            color: #aaa;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: #ff3333;
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: #ff3333;
+            border-color: #ff3333;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(255, 51, 51, 0.3);
+        }
+
         .skin-search-input {
             width: 100%;
             padding: 12px 16px;
@@ -244,58 +275,108 @@
                 </a>
             </div>
 
-            <!-- SAĞ TARAF: Arama Çubuğu ve Skin Listesi -->
+            <!-- SAĞ TARAF: Sekmeler, Arama Çubuğu ve Skin Listesi -->
             <div class="skin-list-wrapper">
+                
+                <!-- Kategori Filtreleme Sekmeleri -->
+                <div class="skin-category-tabs">
+                    <button class="tab-btn active" onclick="filterCategory('all', this)">Tümü</button>
+                    <button class="tab-btn" onclick="filterCategory('normal', this)">Normal Skinler</button>
+                    <button class="tab-btn" onclick="filterCategory('villager', this)">Köylüler</button>
+                </div>
+
                 <input type="text" id="skinSearchInput" class="skin-search-input" placeholder="🔍 Skin ara..." onkeyup="filterSkins()">
 
                 <div class="skin-list-box" id="skinListContainer">
                     
-                    <!-- Skin 1 (Steve) -->
-                    <div class="skin-card active" onclick="selectSkin('Steve', '../images/minecraft_img/steve.png', this, false)">
+                    <!-- Skin 1 (Steve) - Normal -->
+                    <div class="skin-card active" data-category="normal" onclick="selectSkin('Steve', '../images/minecraft_img/steve.png', this, false)">
                         <img src="../images/minecraft_img/body/stevebody.png" alt="Steve">
                         <h4>Steve</h4>
                     </div>
 
-                    <!-- Skin 2 (Alex) -->
-                    <div class="skin-card" onclick="selectSkin('Alex', '../images/minecraft_img/alex.png', this, false)">
+                    <!-- Skin 2 (Alex) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('Alex', '../images/minecraft_img/alex.png', this, false)">
                         <img src="../images/minecraft_img/body/alexbody.png" alt="Alex">
                         <h4>Alex</h4>
                     </div>
 
-                    <!-- Skin 3 (Calse) -->
-                    <div class="skin-card" onclick="selectSkin('Calse', '../images/minecraft_img/calsehd.png', this, false)">
+                    <!-- Skin 3 (Calse) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('Calse', '../images/minecraft_img/calsehd.png', this, false)">
                         <img src="../images/minecraft_img/body/calsehdbody.png" alt="Calse">
                         <h4>Calse</h4>
                     </div>
 
-                    <!-- Skin 4 (Galatasaraylı Calse) -->
-                    <div class="skin-card" onclick="selectSkin('GS Calse', '../images/minecraft_img/galatasaraylı calse.png', this, false)">
+                    <!-- Skin 4 (Galatasaraylı Calse) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('GS Calse', '../images/minecraft_img/galatasaraylı calse.png', this, false)">
                         <img src="../images/minecraft_img/body/gscalsebody.png" alt="GS Calse">
                         <h4>GS Calse</h4>
                     </div>
 
-                    <!-- Skin 5 (Builder Calse) -->
-                    <div class="skin-card" onclick="selectSkin('Builder Calse', '../images/minecraft_img/buildercalse.png', this, false)">
+                    <!-- Skin 5 (Builder Calse) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('Builder Calse', '../images/minecraft_img/buildercalse.png', this, false)">
                         <img src="../images/minecraft_img/body/buildercalsebody.png" alt="Builder Calse">
                         <h4>Builder Calse</h4>
                     </div>
                     
-                    <!-- Skin 6 (Ferited) -->
-                    <div class="skin-card" onclick="selectSkin('Ferited', '../images/minecraft_img/ferited.png', this, false)">
+                    <!-- Skin 6 (Ferited) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('Ferited', '../images/minecraft_img/ferited.png', this, false)">
                         <img src="../images/minecraft_img/body/feritedbody.png" alt="Ferited">
                         <h4>Ferited</h4>
                     </div>
 
-                    <!-- Skin 7 (Ferited 2) -->
-                    <div class="skin-card" onclick="selectSkin('Ferited 2', '../images/minecraft_img/ikizferited.png', this, false)">
+                    <!-- Skin 7 (Ferited 2) - Normal -->
+                    <div class="skin-card" data-category="normal" onclick="selectSkin('Ferited 2', '../images/minecraft_img/ikizferited.png', this, false)">
                         <img src="../images/minecraft_img/body/ferited2body.png" alt="Ferited 2">
                         <h4>Ferited 2</h4>
                     </div>
 
-                    <!-- Skin 8 (Köylü / Villager - OBJ Model, en sonda true yazar) -->
-                    <div class="skin-card" onclick="selectSkin('Köylü', '../images/minecraft_img/richvillager.png', this, true)">
-                        <img src="../images/minecraft_img/body/richvillagerbody.png" alt="Köylü">
+                    <!-- Skin 8 (Köylü / Villager) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Köylü', '../images/minecraft_img/villager/villager.png', this, true)">
+                        <img src="../images/minecraft_img/body/villagerbody.png" alt="Köylü">
                         <h4>Köylü</h4>
+                    </div>
+
+                    <!-- Skin 9 (Zengin Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Zengin Köylü', '../images/minecraft_img/villager/richvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/richvillagerbody.png" alt="Zengin Köylü">
+                        <h4>Zengin Köylü</h4>
+                    </div>
+
+                    <!-- Skin 10 (İnşaatcı Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('İnşaatcı Köylü', '../images/minecraft_img/villager/inşaatcıvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/insaatcivillagerbody.png" alt="İnşaatcı Köylü">
+                        <h4>İnşaatcı Köylü</h4>
+                    </div>
+
+                    <!-- Skin 11 (Polis Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Polis Köylü', '../images/minecraft_img/villager/polisvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/polisvillagerbody.png" alt="Polis Köylü">
+                        <h4>Polis Köylü</h4>
+                    </div>
+
+                    <!-- Skin 12 (Noelbaba Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Noelbaba Köylü', '../images/minecraft_img/villager/noelbabavillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/noelvillagerbody.png" alt="Noelbaba Köylü">
+                        <h4>Noelbaba Köylü</h4>
+                    </div>
+
+                    <!-- Skin 13 (Cool Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Cool Köylü', '../images/minecraft_img/villager/coolvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/coolvillagerbody.png" alt="Cool Köylü">
+                        <h4>Cool Köylü</h4>
+                    </div>
+
+                    <!-- Skin 14 (Herobrine Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Herobrine Köylü', '../images/minecraft_img/villager/herobrinevillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/herobrinevillagerbody.png" alt="Herobrine Köylü">
+                        <h4>Herobrine Köylü</h4>
+                    </div>
+
+                    <!-- Skin 15 (Kütüphaneci Köylü) - Villager -->
+                    <div class="skin-card" data-category="villager" onclick="selectSkin('Kütüphaneci Köylü', '../images/minecraft_img/villager/librarianvillager.png', this, true)">
+                        <img src="../images/minecraft_img/body/librarianvillagerbody.png" alt="Kütüphaneci Köylü">
+                        <h4>Kütüphaneci Köylü</h4>
                     </div>
 
                 </div>
@@ -311,6 +392,7 @@
 
         let currentSkinUrl = "../images/minecraft_img/steve.png";
         let currentSkinName = "steve";
+        let currentCategoryFilter = 'all';
 
         window.onload = function() {
             // Normal SkinViewer Kurulumu (Steve ile başlar)
@@ -364,7 +446,7 @@
             }
         }
 
-        // OBJ Köylü Modelini Yükleme Fonksiyonu (Merkez hizalamalı)
+        // OBJ Köylü Modelini Yükleme Fonksiyonu (Merkez ve Yüz Hizalamalı)
         function loadVillagerObjModel(textureUrl) {
             const container = document.getElementById("obj-container");
 
@@ -411,7 +493,6 @@
                 texture.minFilter = THREE.NearestFilter;
 
                 const objLoader = new THREE.OBJLoader();
-                // models klasöründeki villager.obj dosyasını çağırıyoruz
                 objLoader.load('../models/villager.obj', function(object) {
                     
                     // Eski modeli temizle
@@ -431,16 +512,31 @@
                         }
                     });
 
-                    // Modelin konum ve boyut ayarları (Dikeyde yukarı taşındı, artık tam ortada)
+                    // Modelin konum ve boyut ayarları
                     object.scale.set(1.2, 1.2, 1.2);
                     object.position.set(0, -1, 0);
+                    
+                    // Köylünün yüzünün arkaya dönük kalmaması için ön tarafa bakmasını sağlıyoruz
+                    object.rotation.y = Math.PI;
 
                     objScene.add(object);
                 });
             });
         }
 
-        // Arama/Filtreleme Fonksiyonu
+        // Kategori Sekme Filtreleme Fonksiyonu
+        function filterCategory(category, buttonElement) {
+            currentCategoryFilter = category;
+
+            // Sekme butonlarının aktiflik sınıfını güncelle
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+
+            filterSkins();
+        }
+
+        // Arama ve Kategori Birlikte Filtreleme Fonksiyonu
         function filterSkins() {
             const input = document.getElementById('skinSearchInput');
             const filter = input.value.toLowerCase().trim();
@@ -448,7 +544,14 @@
 
             cards.forEach(card => {
                 const title = card.querySelector('h4').innerText.toLowerCase();
-                if (title.includes(filter)) {
+                const category = card.getAttribute('data-category');
+
+                // Kategori uyuşuyor mu?
+                const matchesCategory = (currentCategoryFilter === 'all' || category === currentCategoryFilter);
+                // Arama metni uyuşuyor mu?
+                const matchesSearch = title.includes(filter);
+
+                if (matchesCategory && matchesSearch) {
                     card.style.display = ""; 
                 } else {
                     card.style.display = "none"; 
@@ -456,8 +559,6 @@
             });
         }
     </script>
-    
-
     
     <script src="../script.js"></script>
 </body>
