@@ -2,11 +2,11 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200, initial-scale=0.3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grand Theft Auto: San Andreas Modları - CalseGame</title>
     <link rel="icon" type="image/png" href="../images/CG.png">
     <link rel="stylesheet" href="../style.css">
-     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -250,23 +250,86 @@
             </a>
 
         </div>
+
+        <!-- Sayfalandırma Butonları (Pagination Container) -->
+        <div id="pagination" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 40px; margin-bottom: 20px;"></div>
     </main>
 
-    <!-- Arama Scripti -->
+    <!-- Sayfalandırma ve Arama Scripti -->
     <script>
-        function searchMods() {
-            let input = document.getElementById('modSearchInput').value.toLowerCase();
-            let items = document.querySelectorAll('.mod-item');
+        const itemsPerPage = 12; // Her sayfada 12 mod gösterilecek şekilde güncellendi
+        let currentPage = 1;
+        let filteredItems = [];
 
-            items.forEach(item => {
-                let text = item.textContent.toLowerCase();
-                if (text.includes(input)) {
-                    item.style.display = "flex";
-                } else {
-                    item.style.display = "none";
-                }
-            });
+        function getVisibleItems() {
+            let input = document.getElementById('modSearchInput').value.toLowerCase();
+            let allItems = Array.from(document.querySelectorAll('.mod-item'));
+            return allItems.filter(item => item.textContent.toLowerCase().includes(input));
         }
+
+        function displayPage(page) {
+            currentPage = page;
+            filteredItems = getVisibleItems();
+            let allItems = document.querySelectorAll('.mod-item');
+            
+            // Tüm modları gizle
+            allItems.forEach(item => item.style.display = "none");
+
+            // Mevcut sayfadakileri göster
+            let start = (page - 1) * itemsPerPage;
+            let end = start + itemsPerPage;
+            let pageItems = filteredItems.slice(start, end);
+
+            pageItems.forEach(item => {
+                item.style.display = "flex";
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            let paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = "";
+
+            let totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+            if (totalPages <= 1) return; // Sayfa 1 veya daha azsa butonları gösterme
+
+            // Önceki Sayfa Butonu
+            let prevBtn = document.createElement('button');
+            prevBtn.innerText = "« Önceki";
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid #444; background: ${currentPage === 1 ? '#111' : '#1e1e1e'}; color: ${currentPage === 1 ? '#555' : 'white'}; cursor: ${currentPage === 1 ? 'default' : 'pointer'};`;
+            prevBtn.onclick = () => { if (currentPage > 1) displayPage(currentPage - 1); };
+            paginationContainer.appendChild(prevBtn);
+
+            // Sayfa Numaraları
+            for (let i = 1; i <= totalPages; i++) {
+                let pageBtn = document.createElement('button');
+                pageBtn.innerText = i;
+                let isActive = i === currentPage;
+                pageBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid ${isActive ? '#ff3333' : '#444'}; background: ${isActive ? '#ff3333' : '#1e1e1e'}; color: white; cursor: pointer; font-weight: ${isActive ? 'bold' : 'normal'};`;
+                pageBtn.onclick = () => displayPage(i);
+                paginationContainer.appendChild(pageBtn);
+            }
+
+            // Sonraki Sayfa Butonu
+            let nextBtn = document.createElement('button');
+            nextBtn.innerText = "Sonraki »";
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid #444; background: ${currentPage === totalPages ? '#111' : '#1e1e1e'}; color: ${currentPage === totalPages ? '#555' : 'white'}; cursor: ${currentPage === totalPages ? 'default' : 'pointer'};`;
+            nextBtn.onclick = () => { if (currentPage < totalPages) displayPage(currentPage + 1); };
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        function searchMods() {
+            displayPage(1); // Arama yapıldığında 1. sayfaya dön
+        }
+
+        // Sayfa yüklendiğinde ilk sayfayı göster
+        document.addEventListener('DOMContentLoaded', () => {
+            displayPage(1);
+        });
     </script>
     
     <script src="../script.js"></script>

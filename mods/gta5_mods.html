@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Theft Auto: 5Modları - CalseGame</title>
+    <link rel="icon" type="image/png" href="../images/CG.png">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <!-- Üst Bar (Navbar) -->
+    <header class="navbar">
+        <div style="display: flex; align-items: center; gap: 30px;">
+            <div class="logo">
+                <a href="../index.html" class="logo-text">
+                    <img src="../images/CG.png" alt="CalseGame Logo" class="nav-logo-img">
+                    <span class="logo-words">
+                        <span class="brand-calse">CALSE</span>
+                        <span class="brand-game">GAME</span>
+                    </span>
+                </a>
+            </div>
+            <nav class="nav-links" style="display: flex; gap: 0; background: rgba(0,0,0,0.2); border-radius: 6px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <a href="../index.html" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1);">Ana Sayfa</a>
+                <a href="../index.html?cat=pc" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease;">PC Oyunları</a>
+                <a href="../index.html?cat=mobil" style="color: #ddd; text-decoration: none; font-weight: 500; padding: 8px 16px;">Mobil Oyunlar</a>
+            </nav>
+        </div>
+        <div class="nav-auth">
+            <a href="#" class="btn-auth btn-login">Oturum Aç</a>
+            <a href="#" class="btn-auth btn-register">Kayıt Ol</a>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container" style="padding: 20px;">
+        <div class="game-detail-header">
+            <h1>Grand Theft Auto: 5 Modları</h1>
+            <p>Grand Theft Auto: 5 için en popüler modları aşağıdan inceleyebilirsin.</p>
+        </div>
+
+        <!-- Arama Çubuğu -->
+        <div style="max-width: 600px; margin: 0 auto 30px auto; text-align: center;">
+            <input type="text" id="modSearchInput" placeholder="Mod ara..." 
+                style="width: 100%; padding: 12px 20px; border-radius: 8px; border: 1px solid #444; background: #1e1e1e; color: white; font-size: 16px; outline: none;"
+                onkeyup="searchMods()">
+        </div>
+
+        <!-- Modlar Izgarası (Grid Container) -->
+        <div id="modList" class="mods-grid">
+
+            <!-- 1.  Open IV -->
+            <a href="mods_download.html?mod=gta5-openiv" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/openiv.png" alt="GTA: 5 Open IV">
+                </div>
+                <div class="mod-content">
+                    <h3>Open IV</h3>
+                    <p>Oyunu modlamaya başlamak için gerekli bir araçtır.</p>
+                </div>
+            </a>
+            
+            <!-- 2.  Script Hook V -->
+            <a href="mods_download.html?mod=gta5-scripthookv" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/scripthookv.png" alt="GTA: 5 Script Hook V">
+                </div>
+                <div class="mod-content">
+                    <h3>Script Hook V</h3>
+                    <p>Oyunu modlamaya başlamak için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 3.  Script Hook V Dot Net -->
+            <a href="mods_download.html?mod=gta5-scripthookvdotnet" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/scripthookv.png" alt="GTA: 5 Script Hook V">
+                </div>
+                <div class="mod-content">
+                    <h3>Script Hook V Dot Net</h3>
+                    <p>Oyunu modlamaya başlamak için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 4. Menyoo -->
+            <a href="mods_download.html?mod=gta5-menyoo" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/menyoo1.png" alt="GTA: 5 Menyoo">
+                </div>
+                <div class="mod-content">
+                    <h3>Menyoo</h3>
+                    <p>Oyunu modlamaya başlamak için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 5. Map Editor -->
+            <a href="mods_download.html?mod=gta5-mapeditor" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/mapeditor.png" alt="GTA: 5 Map Editor">
+                </div>
+                <div class="mod-content">
+                    <h3>Map Editor</h3>
+                    <p>Oyunun haritasını düzenlemek için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 6. Add On Peds -->
+            <a href="mods_download.html?mod=gta5-addonpeds" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/addonpeds.png" alt="GTA: 5 Add On Peds">
+                </div>
+                <div class="mod-content">
+                    <h3>Add On Peds</h3>
+                    <p>Oyunun ekstra pedlerini düzenlemek için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 7. Add On Vehicles Spawner -->
+            <a href="mods_download.html?mod=gta5-addonvehiclespawner" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/addonvehiclespawner.png" alt="GTA: 5 Add On Vehicles Spawner">
+                </div>
+                <div class="mod-content">
+                    <h3>Add On Vehicles Spawner</h3>
+                    <p>Oyunun ekstra araçlarını düzenlemek için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+             <!-- 8. Native UI -->
+            <a href="mods_download.html?mod=gta5-nativeui" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/nativeui.png" alt="GTA: 5 Native UI">
+                </div>
+                <div class="mod-content">
+                    <h3>Native UI</h3>
+                    <p>Oyunun native UI'sini düzenlemek için gerekli bir araçtır.</p>
+                </div>
+            </a>
+
+            <!-- 9. Long Track -->
+            <a href="mods_download.html?mod=gta5-longtrack" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/longtrack1.png" alt="GTA: 5 Long Track">
+                </div>
+                <div class="mod-content">
+                    <h3>Long Track</h3>
+                    <p>Oyuna uzun bir track ekler.</p>
+                </div>
+            </a>
+
+             <!-- 10. Ronaldo Portugal -->
+            <a href="mods_download.html?mod=gta5-ronaldoportugal" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/ronaldo_portugal1.png" alt="GTA: 5 Cristiano Ronaldo Portugal">
+                </div>
+                <div class="mod-content">
+                    <h3>Cristiano Ronaldo Portugal</h3>
+                    <p>Oyuna Cristiano Ronaldo (Portekiz Formalı) karakteri ekler.</p>
+                </div>
+            </a>
+
+            <!-- 11. Ronaldo Real Madrid -->
+            <a href="mods_download.html?mod=gta5-ronaldorealmadrid" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/ronaldo_realmadrid1.png" alt="GTA: 5 Cristiano Ronaldo Real Madrid">
+                </div>
+                <div class="mod-content">
+                    <h3>Cristiano Ronaldo Real Madrid</h3>
+                    <p>Oyuna Cristiano Ronaldo (Real Madrid Formalı) karakteri ekler.</p>
+                </div>
+            </a>
+
+             <!-- 12. Ronaldo Juventus -->
+            <a href="mods_download.html?mod=gta5-ronaldojuventus" class="mod-item">
+                <div class="mod-img-container">
+                    <img src="../images/gta5 mod img/ronaldo_juventus1.png" alt="GTA: 5 Cristiano Ronaldo Juventus">
+                </div>
+                <div class="mod-content">
+                    <h3>Cristiano Ronaldo Juventus</h3>
+                    <p>Oyuna Cristiano Ronaldo (Juventus Formalı) karakteri ekler.</p>
+                </div>
+            </a>
+
+            
+
+           
+        </div>
+
+        <!-- Sayfalandırma Butonları (Pagination Container) -->
+        <div id="pagination" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 40px; margin-bottom: 20px;"></div>
+    </main>
+
+    <!-- Sayfalandırma ve Arama Scripti -->
+    <script>
+        const itemsPerPage = 12; // Her sayfada 12 mod gösterilecek şekilde güncellendi
+        let currentPage = 1;
+        let filteredItems = [];
+
+        function getVisibleItems() {
+            let input = document.getElementById('modSearchInput').value.toLowerCase();
+            let allItems = Array.from(document.querySelectorAll('.mod-item'));
+            return allItems.filter(item => item.textContent.toLowerCase().includes(input));
+        }
+
+        function displayPage(page) {
+            currentPage = page;
+            filteredItems = getVisibleItems();
+            let allItems = document.querySelectorAll('.mod-item');
+            
+            // Tüm modları gizle
+            allItems.forEach(item => item.style.display = "none");
+
+            // Mevcut sayfadakileri göster
+            let start = (page - 1) * itemsPerPage;
+            let end = start + itemsPerPage;
+            let pageItems = filteredItems.slice(start, end);
+
+            pageItems.forEach(item => {
+                item.style.display = "flex";
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            let paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = "";
+
+            let totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+            if (totalPages <= 1) return; // Sayfa 1 veya daha azsa butonları gösterme
+
+            // Önceki Sayfa Butonu
+            let prevBtn = document.createElement('button');
+            prevBtn.innerText = "« Önceki";
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid #444; background: ${currentPage === 1 ? '#111' : '#1e1e1e'}; color: ${currentPage === 1 ? '#555' : 'white'}; cursor: ${currentPage === 1 ? 'default' : 'pointer'};`;
+            prevBtn.onclick = () => { if (currentPage > 1) displayPage(currentPage - 1); };
+            paginationContainer.appendChild(prevBtn);
+
+            // Sayfa Numaraları
+            for (let i = 1; i <= totalPages; i++) {
+                let pageBtn = document.createElement('button');
+                pageBtn.innerText = i;
+                let isActive = i === currentPage;
+                pageBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid ${isActive ? '#ff3333' : '#444'}; background: ${isActive ? '#ff3333' : '#1e1e1e'}; color: white; cursor: pointer; font-weight: ${isActive ? 'bold' : 'normal'};`;
+                pageBtn.onclick = () => displayPage(i);
+                paginationContainer.appendChild(pageBtn);
+            }
+
+            // Sonraki Sayfa Butonu
+            let nextBtn = document.createElement('button');
+            nextBtn.innerText = "Sonraki »";
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.style.cssText = `padding: 8px 14px; border-radius: 6px; border: 1px solid #444; background: ${currentPage === totalPages ? '#111' : '#1e1e1e'}; color: ${currentPage === totalPages ? '#555' : 'white'}; cursor: ${currentPage === totalPages ? 'default' : 'pointer'};`;
+            nextBtn.onclick = () => { if (currentPage < totalPages) displayPage(currentPage + 1); };
+            paginationContainer.appendChild(nextBtn);
+        }
+
+        function searchMods() {
+            displayPage(1); // Arama yapıldığında 1. sayfaya dön
+        }
+
+        // Sayfa yüklendiğinde ilk sayfayı göster
+        document.addEventListener('DOMContentLoaded', () => {
+            displayPage(1);
+        });
+    </script>
+    
+    <script src="../script.js"></script>
+</body>
+</html>
